@@ -1,18 +1,6 @@
-import { useState } from "react";
+import PropTypes from "prop-types";
 
-/** 
- * short date: dd/mm/yy
-long date: dd march yyyy
-
-24-hr: hh:mm
-12-hr: hh:mm PM 
-*/
-
-function TimeDate() {
-  const [shortDate, setShortDate] = useState(false);
-  const [twelveHour, setTwelveHour] = useState(false);
-
-  // Date and Date Formats
+function TimeDate({ shortDate, twelveHour }) {
   const localTime = new Date();
 
   const months = [
@@ -30,15 +18,7 @@ function TimeDate() {
     "December",
   ];
 
-  const days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
+  const days = ["Sun", "Mon", "Tues", "Wed", "Thu", "Fri", "Sat"];
 
   const year = localTime.getFullYear();
   const month = localTime.getMonth();
@@ -68,20 +48,25 @@ function TimeDate() {
   }
 
   return (
-    <>
+    <div className="flex flex-col items-center text-xs">
+      <p>
+        <span className="mr-1">{day},</span>
+        {twelveHour
+          ? twelveHourFormat(hour, mins)
+          : twentyFourFormat(hour, mins)}
+      </p>
       <p>
         {shortDate
           ? shortDateFormat(date, month, year)
           : longDateFormat(date, month, year)}
       </p>
-      <p>{day}</p>
-      <p>
-        {twelveHour
-          ? twelveHourFormat(hour, mins)
-          : twentyFourFormat(hour, mins)}
-      </p>
-    </>
+    </div>
   );
 }
+
+TimeDate.propTypes = {
+  shortDate: PropTypes.bool,
+  twelveHour: PropTypes.bool,
+};
 
 export default TimeDate;
