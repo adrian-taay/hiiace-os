@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import { PiToggleLeftFill, PiToggleRightFill } from "react-icons/pi";
+import Calendar from "react-calendar";
 
 function TimeDateSettings({
   setShowTimeDateSettings,
@@ -14,6 +15,9 @@ function TimeDateSettings({
   return (
     <>
       <div className="absolute bottom-11 right-1 z-20 bg-stone-900 opacity-80 text-white p-6 rounded-md">
+        <div className="wrapper w-60 text-center mb-5">
+          <Calendar />
+        </div>
         <div className="wrapper">
           <div className="date-settings">
             <p>Date Format:</p>
