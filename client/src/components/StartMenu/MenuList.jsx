@@ -1,4 +1,5 @@
 import MenuItem from "./MenuItem";
+import PropTypes from "prop-types";
 
 function MenuList({ list = [] }) {
   return (
@@ -13,5 +14,9 @@ function MenuList({ list = [] }) {
     </>
   );
 }
+
+MenuList.propTypes = {
+  list: PropTypes.array,
+};
 
 export default MenuList;

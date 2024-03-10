@@ -3,6 +3,7 @@ import TimeDate from "./TimeDate/TimeDate";
 import TimeDateSettings from "./TimeDate/TimeDateSettings";
 import { FiTarget, FiChevronUp, FiSun } from "react-icons/fi";
 import StartMenuPopup from "./StartMenu/StartMenuPopup";
+import Window from "./Windows/Window";
 
 function Taskbar() {
   // Start Menu

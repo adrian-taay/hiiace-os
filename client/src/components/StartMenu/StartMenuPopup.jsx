@@ -1,5 +1,6 @@
 import MenuList from "./MenuList";
 import { menu } from "./menu.js";
+import PropTypes from "prop-types";
 
 function StartMenuPopup({ setShowStartMenu }) {
   return (
@@ -14,5 +15,9 @@ function StartMenuPopup({ setShowStartMenu }) {
     </>
   );
 }
+
+StartMenuPopup.propTypes = {
+  setShowStartMenu: PropTypes.func,
+};
 
 export default StartMenuPopup;

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import MenuList from "./MenuList";
+import PropTypes from "prop-types";
 
 function MenuItem({ item }) {
   const [displayChildren, setDisplayChildren] = useState({});
@@ -25,5 +26,9 @@ function MenuItem({ item }) {
     </>
   );
 }
+
+MenuItem.propTypes = {
+  item: PropTypes.object,
+};
 
 export default MenuItem;
