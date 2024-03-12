@@ -10,8 +10,8 @@ function WelcomeScreen() {
 
   return (
     <>
-      <div className="flex w-full h-full">
-        <div className="wrapper w-1/3 pt-4">
+      <div className="flex ">
+        <div className="w-1/3 pt-4">
           <img
             src={
               "https://upload.wikimedia.org/wikipedia/commons/0/07/Ubuntu_MATE_rondel_logo.svg"

@@ -17,10 +17,6 @@ function App() {
             setShowWindow={setShowWindow}
             content={<WelcomeScreen />}
             title={"Welcome!"}
-            defaultSize={{
-              width: 550,
-              height: 400,
-            }}
           />
         ) : null}
       </div>
