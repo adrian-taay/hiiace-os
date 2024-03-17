@@ -1,12 +1,15 @@
-import MenuList from "./MenuList";
-import { menu } from "./menu.js";
+import { menu } from "./menu.jsx";
 import PropTypes from "prop-types";
 
 function StartMenuPopup({ setShowStartMenu }) {
   return (
     <>
       <div className="absolute bottom-11 left-1 z-20 bg-stone-900 opacity-80 text-white p-6 rounded-md">
-        <MenuList list={menu} />
+        {menu.map((item, index) => (
+          <div key={index} className="flex items-center gap-3 my-3">
+            {item.icon} {item.title}
+          </div>
+        ))}
       </div>
       <div
         onClick={() => setShowStartMenu(false)}
