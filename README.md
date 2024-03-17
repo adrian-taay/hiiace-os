@@ -1,6 +1,6 @@
 **Overview**
 
-I made this page for the purpose of (1) compiling all mini projects I'm doing while learning ReactJS, while setting it up to be my interactive web dev portfolio.
+I made this page for the purpose of (1) compiling all mini projects I'm doing while learning ReactJS, while (2) setting it up to be my interactive web dev portfolio.
 
 I take inspiration from this project by DustinBrett (https://github.com/DustinBrett/daedalOS). Of course as a novice developer that I am, this is just a simple implementation of how a desktop environment works. In the future, more apps and features will be added as I go.
 
@@ -17,6 +17,10 @@ Uses basic useState hooks. Comes with react-calendar which does nothing but to i
 **Welcome Screen**
 
 Uses react-rnd npm package.
+
+**Calculator**
+
+Followed this excellent tutorial by Web Dev Simplified (https://youtu.be/DgRrrOt0Vr8?si=oYyhMYfNP6C6XiZj). Built without any Math libraries, just useReducer Hook.
 
 **Future Apps and Features in mind right now:**
 
