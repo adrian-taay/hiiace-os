@@ -136,7 +136,7 @@ function Calculator() {
     {}
   );
 
-  console.log({ currentOperand, previousOperand, operation });
+  // console.log({ currentOperand, previousOperand, operation });
 
   return (
     <>

@@ -22,6 +22,10 @@ Uses react-rnd npm package.
 
 Followed this excellent tutorial by Web Dev Simplified (https://youtu.be/DgRrrOt0Vr8?si=oYyhMYfNP6C6XiZj). Built without any Math libraries, just useReducer Hook.
 
+**Window Manager**
+
+Uses useContext hook to instantiate multiple Windows component.
+
 **Future Apps and Features in mind right now:**
 
 - Weather app
