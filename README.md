@@ -1,14 +1,31 @@
 **Overview**
 
-I made this page for the purpose of (1) compiling all mini projects I'm doing while learning ReactJS, while (2) setting it up to be my interactive web dev portfolio.
+I made this page for the purpose of (1) compiling all the small projects I'm doing while learning ReactJS, while (2) setting it up to be my interactive web dev portfolio.
 
-I take inspiration from this project by DustinBrett (https://github.com/DustinBrett/daedalOS). Of course as a novice developer that I am, this is just a simple implementation of how a desktop environment works. In the future, more apps and features will be added as I go.
+I take inspiration from this project made by DustinBrett (https://github.com/DustinBrett/daedalOS). As a novice developer, I made this simple implementation of how a desktop environment works. In the future, more apps and features will be added as I go.
 
-I want it to look like a desktop environment that is loosely based on my current setup. I use Ubuntu btw.
+**Window Manager**
+
+I want it to look like a desktop environment that is loosely based on how my current setup looks.
+
+- Ubuntu 23.04
+- GNOME
+- Adwaita Theme
+- Dash-to-Panel
+- ArcMenu
+
+Uses useState and useContext hooks to instantiate multiple <Window /> component. To make it draggable and resizable, I used the react-rnd npm package.
 
 **Taskbar**
 
-For the taskbar, I prefer the Windows setup as it is simple and doesn't occupy much screen height. Uses basic conditional rendering.
+For the taskbar, I prefer the Windows setup as it is simple and it doesn't occupy much screen height. Uses basic conditional rendering.
+
+- Start Menu
+- Active Windows
+- Taskbar settings
+- Weather app
+- Time and Date
+- Show Desktop Icon
 
 **Time and Date**
 
@@ -16,15 +33,11 @@ Uses basic useState hooks. Comes with react-calendar which does nothing but to i
 
 **Welcome Screen**
 
-Uses react-rnd npm package.
+Contains introductory notes and quick links for when the client/interviewer just want to see my resume/social media.
 
 **Calculator**
 
 Followed this excellent tutorial by Web Dev Simplified (https://youtu.be/DgRrrOt0Vr8?si=oYyhMYfNP6C6XiZj). Built without any Math libraries, just useReducer Hook.
-
-**Window Manager**
-
-Uses useContext hook to instantiate multiple Windows component.
 
 **Future Apps and Features in mind right now:**
 

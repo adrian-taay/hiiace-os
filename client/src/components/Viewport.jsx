@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { OpenAppsContext } from "../OpenAppsProvider";
-import Window from "./Windows/Window";
+import Window from "./Window";
 
 function Viewport() {
   const { openApps } = useContext(OpenAppsContext);
