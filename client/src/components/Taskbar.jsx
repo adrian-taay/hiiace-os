@@ -1,19 +1,21 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import TimeDate from "./TimeDate/TimeDate";
 import TimeDateSettings from "./TimeDate/TimeDateSettings";
 import { FiTarget, FiChevronUp, FiSun } from "react-icons/fi";
 import StartMenuPopup from "./StartMenu/StartMenuPopup";
+import { OpenAppsContext } from "../OpenAppsProvider";
 
 function Taskbar() {
   // Start Menu
   const [showStartMenu, setShowStartMenu] = useState(false);
+  const { openApps } = useContext(OpenAppsContext);
 
   // Time and Date
   const [shortDate, setShortDate] = useState(false);
   const [twelveHour, setTwelveHour] = useState(false);
   const [showTimeDateSettings, setShowTimeDateSettings] = useState(false);
 
-  // Show Modal Window
+  // Show Time and Date settings
   function handleShowTimeDateSettings() {
     setShowTimeDateSettings(!showTimeDateSettings);
   }
@@ -26,9 +28,20 @@ function Taskbar() {
           onClick={() => setShowStartMenu(!showStartMenu)}
         >
           <FiTarget size={20} />
-          <p className="ml-2">Start</p>
+          <p className="ml-2 text-sm">Start</p>
         </div>
-        <div className="flex-1"></div>
+        <div className="ml-1 flex-1 flex">
+          {openApps.map((item, index) => {
+            return (
+              <div
+                key={index}
+                className="flex ml-3 text-sm items-center px-5 hover:bg-slate-700"
+              >
+                <span className="mr-2">{item.icon}</span> {item.title}
+              </div>
+            );
+          })}
+        </div>
         <div className="flex gap-3 items-center">
           <FiChevronUp />
           <FiSun />
