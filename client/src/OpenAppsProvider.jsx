@@ -1,29 +1,22 @@
-import { createContext, useReducer, useState } from "react";
-import { menu } from "./components/StartMenu/menu";
+import PropTypes from "prop-types";
+import { createContext, useReducer } from "react";
 
 export const OpenAppsContext = createContext();
 
 function reducer(state, action) {
   switch (action.type) {
-    case 'open-app':
-      return {
-        ...state,
-        {
-          
-        }
-      }
+    case "open-app":
+      return [...state, action.payload];
+    case "close-app":
+      return state.filter((item) => item.id !== action.payload.id);
   }
 }
 
 export default function OpenAppsProvider({ children }) {
   // const [openApps, setOpenApps] = useState([]);
-  const [state, dispatch] = useReducer(reducer, []);
+  const [openApps, dispatch] = useReducer(reducer, []);
 
-  function updateOpenApps(newApp) {
-    setOpenApps([...openApps, newApp]);
-  }
-
-  const settings = { openApps, updateOpenApps };
+  const settings = { openApps, dispatch };
 
   return (
     <>
@@ -33,3 +26,7 @@ export default function OpenAppsProvider({ children }) {
     </>
   );
 }
+
+OpenAppsProvider.propTypes = {
+  children: PropTypes.object,
+};

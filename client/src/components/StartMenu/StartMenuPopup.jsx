@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { OpenAppsContext } from "../../OpenAppsProvider.jsx";
 
 function StartMenuPopup({ setShowStartMenu }) {
-  const { openApps, updateOpenApps } = useContext(OpenAppsContext);
+  const { openApps, dispatch } = useContext(OpenAppsContext);
 
   console.log(openApps);
 
@@ -16,10 +16,9 @@ function StartMenuPopup({ setShowStartMenu }) {
             key={index}
             className="flex items-center gap-3 my-3"
             onClick={() =>
-              updateOpenApps({
-                ...menu[index],
-                minimized: false,
-                maximized: false,
+              dispatch({
+                type: "open-app",
+                payload: { ...menu[index], minimized: false, maximized: false },
               })
             }
           >

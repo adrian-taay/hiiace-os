@@ -8,7 +8,12 @@ function Viewport() {
   return (
     <div>
       {openApps.map((item, index) => (
-        <Window key={index} title={item.title} content={item.content} />
+        <Window
+          key={index}
+          id={item.id}
+          title={item.title}
+          content={item.content}
+        />
       ))}
     </div>
   );

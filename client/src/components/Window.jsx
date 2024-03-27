@@ -1,12 +1,15 @@
 import PropTypes from "prop-types";
+import { useContext } from "react";
+import { OpenAppsContext } from "../OpenAppsProvider";
 import { MdMinimize } from "react-icons/md";
 import { FiSquare } from "react-icons/fi";
 import { AiFillCloseCircle } from "react-icons/ai";
 import { Rnd } from "react-rnd";
 
-function Window({ title, content, setShowWindow }) {
+function Window({ id, title, content }) {
   const viewportWidth = document.body.clientWidth;
   const viewportHeight = document.body.clientHeight;
+  const { dispatch } = useContext(OpenAppsContext);
 
   return (
     <>
@@ -32,7 +35,9 @@ function Window({ title, content, setShowWindow }) {
                 size={16}
                 fill="rgb(233,84,32)"
                 color="white"
-                onClick={() => setShowWindow(false)}
+                onClick={() =>
+                  dispatch({ type: "close-app", payload: { id: id } })
+                }
               />
             </div>
           </div>
@@ -45,9 +50,9 @@ function Window({ title, content, setShowWindow }) {
 
 Window.propTypes = {
   defaultSize: PropTypes.object,
+  id: PropTypes.number,
   title: PropTypes.string,
   content: PropTypes.element,
-  setShowWindow: PropTypes.func,
 };
 
 export default Window;
