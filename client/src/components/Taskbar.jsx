@@ -8,7 +8,7 @@ import { OpenAppsContext } from "../OpenAppsProvider";
 function Taskbar() {
   // Start Menu
   const [showStartMenu, setShowStartMenu] = useState(false);
-  const { openApps } = useContext(OpenAppsContext);
+  const { openApps, dispatch } = useContext(OpenAppsContext);
 
   // Time and Date
   const [shortDate, setShortDate] = useState(false);
@@ -36,6 +36,9 @@ function Taskbar() {
               <div
                 key={index}
                 className="flex ml-3 text-sm items-center px-5 hover:bg-slate-700"
+                onClick={() =>
+                  dispatch({ type: "minimize-app", payload: { id: item.id } })
+                }
               >
                 <span className="mr-2">{item.icon}</span> {item.title}
               </div>
