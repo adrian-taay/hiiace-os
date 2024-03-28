@@ -1,6 +1,6 @@
 import Calculator from "../Calculator/Calculator";
-import WelcomeScreen from "../Windows/WelcomeScreen";
-import Test from "../Windows/Test";
+import WelcomeScreen from "../WelcomeScreen/WelcomeScreen";
+import Test from "../WelcomeScreen/Test";
 import { CgCalculator } from "react-icons/cg";
 import { LuPartyPopper, LuBrain, LuAppWindow, LuInfo } from "react-icons/lu";
 import { FaSpotify } from "react-icons/fa";

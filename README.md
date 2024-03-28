@@ -42,6 +42,10 @@ Contains introductory notes and quick links for when the client/interviewer just
 
 Followed this excellent tutorial by Web Dev Simplified (https://youtu.be/DgRrrOt0Vr8?si=oYyhMYfNP6C6XiZj). Built without any Math libraries, just useReducer Hook.
 
+**Conky Linux**
+
+Or Rainmeter if you will. Uses basic styling.
+
 **Future Apps and Features in mind right now:**
 
 - Weather app
