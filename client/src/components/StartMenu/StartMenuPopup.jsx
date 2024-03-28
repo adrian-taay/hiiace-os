@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { menu } from "./menu.jsx";
 import PropTypes from "prop-types";
 import { OpenAppsContext } from "../../OpenAppsProvider.jsx";
+import { motion } from "framer-motion";
 
 function StartMenuPopup({ setShowStartMenu }) {
   const { openApps, dispatch } = useContext(OpenAppsContext);
@@ -23,7 +24,12 @@ function StartMenuPopup({ setShowStartMenu }) {
 
   return (
     <>
-      <div className="absolute bottom-11 left-1 z-20 bg-stone-900 opacity-80 text-white p-6 rounded-md">
+      <motion.div
+        className="absolute bottom-11 left-1 z-20 bg-stone-900 opacity-80 text-white p-6 rounded-md"
+        initial={{ y: 0 }}
+        animate={{ y: -5 }}
+        transition={{ duration: 0.3 }}
+      >
         {menu.map((item, index) => (
           <div
             key={index}
@@ -33,7 +39,7 @@ function StartMenuPopup({ setShowStartMenu }) {
             {item.icon} {item.title}
           </div>
         ))}
-      </div>
+      </motion.div>
       <div
         onClick={() => setShowStartMenu(false)}
         className="absolute top-0 overlay z-10 w-full h-screen"

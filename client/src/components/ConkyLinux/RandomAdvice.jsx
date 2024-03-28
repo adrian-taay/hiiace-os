@@ -14,7 +14,11 @@ function RandomAdvice() {
     getAdvice();
   }, []);
 
-  return <div className="text-white">{advice ? advice : "Loading..."}</div>;
+  return (
+    <div className="text-white text-xs text-center w-3/4">
+      {advice ? advice : "Loading..."}
+    </div>
+  );
 }
 
 export default RandomAdvice;

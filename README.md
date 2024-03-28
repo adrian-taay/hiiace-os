@@ -46,12 +46,23 @@ Followed this excellent tutorial by Web Dev Simplified (https://youtu.be/DgRrrOt
 
 Or Rainmeter if you will. Uses basic styling.
 
+Time and Date Display - refactored previous TimeDate.jsx to use useContext for both components to use one state.
+
 **Future Apps and Features in mind right now:**
 
 - Weather app
 - PDF reader
 - Spotiphy
-- Conky Linux theme
 - Desktop shortcuts
 - Terminal
 - Mathel Memory (JS game I made while in the bootcamp)
+
+** For Conky **
+Trying to find a way to get these stats onto my Conky setup.
+
+- GitHub stats
+  https://github.com/anuraghazra/github-readme-stats
+
+- Codewars stats
+  https://github.com/DiniFarb/codewars_readme_stats?tab=readme-ov-file
+  https://github.r2v.ch/codewars?user=adrian.taay
