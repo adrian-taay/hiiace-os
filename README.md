@@ -4,7 +4,7 @@ I made this page for the purpose of (1) compiling all the small projects I'm doi
 
 I take inspiration from this project made by DustinBrett (https://github.com/DustinBrett/daedalOS). As a novice developer, I made this simple implementation of how a desktop environment works. In the future, more apps and features will be added as I go.
 
-**Window Manager**
+**Desktop Environment / Window Manager**
 
 I want it to look like a desktop environment that is loosely based on how my current setup looks.
 
@@ -14,7 +14,10 @@ I want it to look like a desktop environment that is loosely based on how my cur
 - Dash-to-Panel
 - ArcMenu
 
-Uses useState and useContext hooks to instantiate multiple <Window /> component. To make it draggable and resizable, I used the react-rnd npm package.
+Uses useReducer and useContext hooks to instantiate multiple <Window /> component. To make it draggable and resizable, I used the react-rnd npm package.
+
+Minimizable - useReducer
+Active Window - onClick and onDrag
 
 **Taskbar**
 

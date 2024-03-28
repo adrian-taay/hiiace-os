@@ -14,11 +14,16 @@ function StartMenuPopup({ setShowStartMenu }) {
         {menu.map((item, index) => (
           <div
             key={index}
-            className="flex items-center gap-3 my-3"
+            className="flex items-center gap-3 my-3 cursor-default"
             onClick={() =>
               dispatch({
                 type: "open-app",
-                payload: { ...menu[index], minimized: false, maximized: false },
+                payload: {
+                  ...menu[index],
+                  minimized: false,
+                  maximized: false,
+                  zindex: 1,
+                },
               })
             }
           >

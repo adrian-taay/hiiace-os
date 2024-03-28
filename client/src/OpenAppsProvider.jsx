@@ -7,13 +7,24 @@ function reducer(state, action) {
   switch (action.type) {
     case "open-app":
       return [...state, action.payload];
+    case "minimize-app":
+      return state.map((item) => {
+        if (item.id === action.payload.id) {
+          return { ...item, minimized: !item.minimized };
+        }
+        return { ...item };
+      });
     case "close-app":
       return state.filter((item) => item.id !== action.payload.id);
+    case "active-app":
+      return state.map((item) => {
+        if (item.id === action.payload.id) return { ...item, zindex: 10 };
+        return { ...item, zindex: 0 };
+      });
   }
 }
 
 export default function OpenAppsProvider({ children }) {
-  // const [openApps, setOpenApps] = useState([]);
   const [openApps, dispatch] = useReducer(reducer, []);
 
   const settings = { openApps, dispatch };
@@ -28,5 +39,5 @@ export default function OpenAppsProvider({ children }) {
 }
 
 OpenAppsProvider.propTypes = {
-  children: PropTypes.object,
+  children: PropTypes.array,
 };

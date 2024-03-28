@@ -7,14 +7,17 @@ function Viewport() {
 
   return (
     <div>
-      {openApps.map((item, index) => (
-        <Window
-          key={index}
-          id={item.id}
-          title={item.title}
-          content={item.content}
-        />
-      ))}
+      {openApps.map((item, index) => {
+        return item.minimized ? null : (
+          <Window
+            key={index}
+            id={item.id}
+            title={item.title}
+            content={item.content}
+            zindex={item.zindex}
+          />
+        );
+      })}
     </div>
   );
 }
