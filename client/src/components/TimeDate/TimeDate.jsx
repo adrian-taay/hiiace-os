@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { useContext } from "react";
-import { TimeContext } from "../../TimeProvider";
+import { TimeContext } from "../../providers/TimeProvider";
 
 function TimeDate({ shortDate, twelveHour }) {
   const {

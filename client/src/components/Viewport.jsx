@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { OpenAppsContext } from "../OpenAppsProvider";
+import { OpenAppsContext } from "../providers/OpenAppsProvider";
 import Window from "./Window";
 import ConkyLinux from "./ConkyLinux/ConkyLinux";
 

@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { TimeContext } from "../../TimeProvider";
+import { TimeContext } from "../../providers/TimeProvider";
 
 function TimeDateDisplay() {
   const { months, days, year, month, date, day, hour, mins } =

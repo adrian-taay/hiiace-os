@@ -1,26 +1,25 @@
-**Overview**
-
-I made this page for the purpose of (1) compiling all the small projects I'm doing while learning ReactJS, while (2) setting it up to be my interactive web dev portfolio.
+**OVERVIEW**
+Welcome! I made this page for the purpose of (1) compiling all the small projects I'm doing while learning ReactJS, while (2) setting it up to be my interactive web dev portfolio.
 
 I take inspiration from this project made by DustinBrett (https://github.com/DustinBrett/daedalOS). As a novice developer, I made this simple implementation of how a desktop environment works. In the future, more apps and features will be added as I go.
 
-**Desktop Environment / Window Manager**
-
+**DESKTOP ENVIRONMENT / WINDOWS MANAGER**
 I want it to look like a desktop environment that is loosely based on how my current setup looks.
 
-- Ubuntu 23.04
+- Ubuntu
 - GNOME
 - Adwaita Theme
 - Dash-to-Panel
 - ArcMenu
+- Conky Linux
 
-Uses useReducer and useContext hooks to instantiate multiple <Window /> component. To make it draggable and resizable, I used the react-rnd npm package.
+\*\*Tools =>
 
-Minimizable - useReducer
-Active Window - onClick and onDrag
+- react-rnd: To make windows resizable and draggable
+- react-icons: Icons and logos
+- framer-motion: To animate pop-ups, toggle minimize and maximize, opening and closing of windows.
 
-**Taskbar**
-
+**TASKBAR**
 For the taskbar, I prefer the Windows setup as it is simple and it doesn't occupy much screen height. Uses basic conditional rendering.
 
 - Start Menu
@@ -30,39 +29,41 @@ For the taskbar, I prefer the Windows setup as it is simple and it doesn't occup
 - Time and Date
 - Show Desktop Icon
 
-**Time and Date**
-
+**TIME AND DATE**
 Uses basic useState hooks. Comes with react-calendar which does nothing but to imitate a time and date popup.
 
-**Welcome Screen**
+\*\*Tools =>
 
+- react-calendar: A basic calendar
+
+**WELCOME SCREEN**
 Contains introductory notes and quick links for when the client/interviewer just want to see my resume/social media.
 
-**Calculator**
+**CALCULATOR**
+Followed this excellent tutorial by **Web Dev Simplified** (https://youtu.be/DgRrrOt0Vr8?si=oYyhMYfNP6C6XiZj). Built without any Math libraries, just useReducer Hook.
 
-Followed this excellent tutorial by Web Dev Simplified (https://youtu.be/DgRrrOt0Vr8?si=oYyhMYfNP6C6XiZj). Built without any Math libraries, just useReducer Hook.
-
-**Conky Linux**
-
+**CONKY LINUX**
 Or Rainmeter if you will. Uses basic styling.
 
-Time and Date Display - refactored previous TimeDate.jsx to use useContext for both components to use one state.
+- Time and Date display: **_Uses local machine time and date_**
+- Random advice display: **_Fetch API (https://api.adviceslip.com/advice)_**
+- Weather display: **_Fetch API (https://openweathermap.org/api)_**
+- GitHub stats: **_Trying to find a way to get my stats_**
+  https://github.com/anuraghazra/github-readme-stats
+- Codewars stats: **_This as well_**
+  https://github.com/DiniFarb/codewars_readme_stats?tab=readme-ov-file
+  https://github.r2v.ch/codewars?user=adrian.taay
 
 **Future Apps and Features in mind right now:**
 
-- Weather app
-- PDF reader
-- Spotiphy
-- Desktop shortcuts
-- Terminal
-- Mathel Memory (JS game I made while in the bootcamp)
+**WEATHER APP**
+Fetches data from https://openweathermap.org/api
 
-** For Conky **
-Trying to find a way to get these stats onto my Conky setup.
+**TO-DO APP**
 
-- GitHub stats
-  https://github.com/anuraghazra/github-readme-stats
+**PDF READER**
 
-- Codewars stats
-  https://github.com/DiniFarb/codewars_readme_stats?tab=readme-ov-file
-  https://github.r2v.ch/codewars?user=adrian.taay
+**TERMINAL**
+
+**MATHEL MEMORY**
+JS game I made during bootcamp

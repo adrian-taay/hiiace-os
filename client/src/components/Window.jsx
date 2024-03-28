@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { useContext } from "react";
-import { OpenAppsContext } from "../OpenAppsProvider";
+import { OpenAppsContext } from "../providers/OpenAppsProvider";
 import { MdMinimize } from "react-icons/md";
 import { FiSquare } from "react-icons/fi";
 import { AiFillCloseCircle } from "react-icons/ai";

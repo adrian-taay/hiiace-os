@@ -1,6 +1,6 @@
 import Taskbar from "./components/Taskbar";
-import OpenAppsProvider from "./OpenAppsProvider";
-import TimeProvider from "./TimeProvider";
+import OpenAppsProvider from "./providers/OpenAppsProvider";
+import TimeProvider from "./providers/TimeProvider";
 import Viewport from "./components/Viewport";
 
 function App() {
