@@ -3,6 +3,8 @@ import { OpenAppsContext } from "../OpenAppsProvider";
 import Window from "./Window";
 
 function Viewport() {
+  const viewportWidth = document.body.clientWidth;
+  const viewportHeight = document.body.clientHeight;
   const { openApps } = useContext(OpenAppsContext);
 
   return (
@@ -15,6 +17,12 @@ function Viewport() {
             title={item.title}
             content={item.content}
             zindex={item.zindex}
+            dimensions={{
+              x: (viewportWidth - 550) / 2 + index * 25,
+              y: (viewportHeight - 550) / 2 + index * 25,
+              width: 550,
+              height: 380,
+            }}
           />
         );
       })}

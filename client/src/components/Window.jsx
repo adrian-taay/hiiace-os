@@ -6,22 +6,16 @@ import { FiSquare } from "react-icons/fi";
 import { AiFillCloseCircle } from "react-icons/ai";
 import { Rnd } from "react-rnd";
 
-function Window({ id, title, content, zindex }) {
-  const viewportWidth = document.body.clientWidth;
-  const viewportHeight = document.body.clientHeight;
+// Reference at Viewport.jsx
+function Window({ id, title, content, zindex, dimensions }) {
   const { dispatch } = useContext(OpenAppsContext);
 
   return (
     <>
       <Rnd
-        default={{
-          x: (viewportWidth - 550) / 2,
-          y: (viewportHeight - 550) / 2,
-          width: 550,
-          height: 380,
-        }}
-        minWidth={550}
-        minHeight={380}
+        default={dimensions}
+        minWidth={dimensions.width}
+        minHeight={dimensions.height}
         cancel=".content"
         className="bg-neutral-200 rounded-t-lg rounded-b-sm drop-shadow-lg"
         style={{ zIndex: zindex }}
@@ -62,6 +56,7 @@ Window.propTypes = {
   title: PropTypes.string,
   content: PropTypes.element,
   zindex: PropTypes.number,
+  dimensions: PropTypes.object,
 };
 
 export default Window;

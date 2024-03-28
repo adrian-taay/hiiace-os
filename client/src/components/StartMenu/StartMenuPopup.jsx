@@ -6,6 +6,19 @@ import { OpenAppsContext } from "../../OpenAppsProvider.jsx";
 function StartMenuPopup({ setShowStartMenu }) {
   const { openApps, dispatch } = useContext(OpenAppsContext);
 
+  function handleOpenApp(itemIndex) {
+    dispatch({
+      type: "open-app",
+      payload: {
+        ...menu[itemIndex],
+        minimized: false,
+        maximized: false,
+        zindex: 1,
+      },
+    });
+    setShowStartMenu(false);
+  }
+
   console.log(openApps);
 
   return (
@@ -15,17 +28,7 @@ function StartMenuPopup({ setShowStartMenu }) {
           <div
             key={index}
             className="flex items-center gap-3 my-3 cursor-default"
-            onClick={() =>
-              dispatch({
-                type: "open-app",
-                payload: {
-                  ...menu[index],
-                  minimized: false,
-                  maximized: false,
-                  zindex: 1,
-                },
-              })
-            }
+            onClick={() => handleOpenApp(index)}
           >
             {item.icon} {item.title}
           </div>

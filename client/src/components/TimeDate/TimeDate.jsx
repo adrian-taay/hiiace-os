@@ -1,7 +1,16 @@
 import PropTypes from "prop-types";
+import { useEffect, useState } from "react";
 
 function TimeDate({ shortDate, twelveHour }) {
-  const localTime = new Date();
+  const [localTime, setLocalTime] = useState(new Date());
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setLocalTime(new Date());
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
 
   const months = [
     "January",
