@@ -25,7 +25,7 @@ I want it to look like a desktop environment that is loosely based on how my cur
 
 For the taskbar, I prefer the Windows setup as it is simple and it doesn't occupy much screen height. Uses basic conditional rendering.
 
-- Start Menu
+- Start Menu: ArcMenu look
 - Active Windows
 - Taskbar settings
 - Weather app
@@ -56,10 +56,17 @@ Or Rainmeter if you will. Uses basic styling.
 - Random advice display: _Fetch API (https://api.adviceslip.com/advice)_
 - Weather display: _Fetch API (https://openweathermap.org/api)_
 - GitHub stats: _Trying to find a way to get my stats_
+
   https://github.com/anuraghazra/github-readme-stats
+
 - Codewars stats: _This as well_
+
   https://github.com/DiniFarb/codewars_readme_stats?tab=readme-ov-file
   https://github.r2v.ch/codewars?user=adrian.taay
+
+**MUSIC PLAYER**
+
+Followed this tutorial https://www.youtube.com/watch?v=KIwgfJF_gEk. Will refactor this in the future where both the music player and Conky music display are in sync.
 
 **Future Apps and Features in mind right now:**
 

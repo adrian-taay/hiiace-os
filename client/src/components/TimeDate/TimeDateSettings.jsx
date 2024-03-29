@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import { PiToggleLeftFill, PiToggleRightFill } from "react-icons/pi";
 import Calendar from "react-calendar";
+import { motion } from "framer-motion";
 
 function TimeDateSettings({
   setShowTimeDateSettings,
@@ -14,7 +15,12 @@ function TimeDateSettings({
 
   return (
     <>
-      <div className="absolute bottom-11 right-1 z-20 bg-stone-900 opacity-80 text-white p-6 rounded-md">
+      <motion.div
+        className="absolute bottom-11 right-1 z-20 bg-stone-900 opacity-80 text-white p-6 rounded-md"
+        initial={{ y: 25 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.2 }}
+      >
         <div className="wrapper w-60 text-center mb-5">
           <Calendar />
         </div>
@@ -46,7 +52,7 @@ function TimeDateSettings({
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
       <div
         onClick={() => setShowTimeDateSettings(false)}
         className="absolute top-0 overlay z-10 w-full h-screen"

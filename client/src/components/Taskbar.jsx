@@ -1,7 +1,8 @@
 import { useContext, useState } from "react";
 import TimeDate from "./TimeDate/TimeDate";
 import TimeDateSettings from "./TimeDate/TimeDateSettings";
-import { FiTarget, FiChevronUp, FiSun } from "react-icons/fi";
+import { FiChevronUp, FiSun } from "react-icons/fi";
+import { FcRating } from "react-icons/fc";
 import StartMenuPopup from "./StartMenu/StartMenuPopup";
 import { OpenAppsContext } from "../providers/OpenAppsProvider";
 
@@ -22,12 +23,12 @@ function Taskbar() {
 
   return (
     <>
-      <div className="absolute bottom-0 bg-stone-900 opacity-80 w-full h-10 flex items-center px-2 text-white">
+      <div className="absolute bottom-0 bg-stone-900 opacity-80 w-full h-10 flex items-center text-white select-none overflow-hidden">
         <div
-          className="flex items-center"
+          className="flex items-center hover:bg-white hover:bg-opacity-20 p-2.5"
           onClick={() => setShowStartMenu(!showStartMenu)}
         >
-          <FiTarget size={20} />
+          <FcRating size={24} />
           <p className="ml-2 text-sm">Start</p>
         </div>
         <div className="ml-1 flex-1 flex">
@@ -35,7 +36,7 @@ function Taskbar() {
             return (
               <div
                 key={index}
-                className="flex ml-3 text-sm items-center px-5 hover:bg-slate-700"
+                className="flex text-sm items-center hover:bg-white hover:bg-opacity-20 px-3 py-2.5"
                 onClick={() =>
                   dispatch({ type: "minimize-app", payload: { id: item.id } })
                 }
@@ -45,19 +46,28 @@ function Taskbar() {
             );
           })}
         </div>
-        <div className="flex gap-3 items-center">
-          <FiChevronUp />
-          <FiSun />
+        <div className="flex gap-0 items-center">
+          <div className="hover:bg-white hover:bg-opacity-20 p-3">
+            <FiChevronUp />
+          </div>
+          <div className="hover:bg-white hover:bg-opacity-20 p-3">
+            <FiSun />
+          </div>
           <div>
             <span
               onClick={() => handleShowTimeDateSettings()}
-              className="flex ml-2"
+              className="flex hover:bg-white hover:bg-opacity-20 p-2.5"
             >
               <TimeDate shortDate={shortDate} twelveHour={twelveHour} />
             </span>
           </div>
         </div>
-        <div className="w-3"></div>
+        <div
+          className="w-3 hover:bg-white hover:bg-opacity-20 py-5"
+          onClick={() => dispatch({ type: "minimize-all" })}
+        >
+          &nbsp;
+        </div>
       </div>
 
       {showStartMenu ? (

@@ -21,6 +21,10 @@ function reducer(state, action) {
         if (item.id === action.payload.id) return { ...item, zindex: 10 };
         return { ...item, zindex: 0 };
       });
+    case "minimize-all":
+      return state.map((item) => {
+        return { ...item, minimized: true };
+      });
   }
 }
 

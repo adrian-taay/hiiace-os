@@ -98,8 +98,8 @@ export default MusicDisplay;
 
 MusicDisplay.propTypes = {
   songs: PropTypes.array,
-  isPlaying: PropTypes.array,
-  setIsPlaying: PropTypes.bool,
+  isPlaying: PropTypes.bool,
+  setIsPlaying: PropTypes.func,
   currentSong: PropTypes.object,
   setCurrentSong: PropTypes.func,
   audioElem: PropTypes.object,
