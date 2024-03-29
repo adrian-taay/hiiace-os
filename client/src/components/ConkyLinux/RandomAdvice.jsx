@@ -15,7 +15,7 @@ function RandomAdvice() {
   }, []);
 
   return (
-    <div className="text-white text-xs text-center w-3/4">
+    <div className="text-white text-xs text-center w-1/2">
       {advice ? advice : "Loading..."}
     </div>
   );
