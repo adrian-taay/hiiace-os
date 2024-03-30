@@ -43,7 +43,7 @@ function StartMenuPopup({ setShowStartMenu }) {
           ))}
         </div>
         <div className="w-36 px-5">
-          <Sidebar />
+          <Sidebar setShowStartMenu={setShowStartMenu} />
         </div>
       </motion.div>
       <div

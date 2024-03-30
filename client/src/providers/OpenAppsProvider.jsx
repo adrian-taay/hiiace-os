@@ -78,6 +78,8 @@ export default function OpenAppsProvider({ children }) {
 
   const [showScreen, setShowScreen] = useState(false);
 
+  console.log(shutDownScreen);
+
   const settings = {
     openApps,
     dispatch,
@@ -86,8 +88,6 @@ export default function OpenAppsProvider({ children }) {
     showScreen,
     setShowScreen,
   };
-
-  console.log(shutDownScreen);
 
   return (
     <>

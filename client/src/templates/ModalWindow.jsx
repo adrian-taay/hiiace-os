@@ -6,8 +6,8 @@ function ModalWindow() {
     useContext(OpenAppsContext);
 
   return (
-    <div className="absolute w-full h-full top-0 left-0 flex items-center z-1">
-      <div className="mx-auto w-96 shadow-lg rounded-lg overflow-hidden text-sm text-center z-30 select-none">
+    <div className="absolute w-full h-full top-0 left-0 flex items-center z-40 bg-black bg-opacity-50">
+      <div className="mx-auto w-96 shadow-lg rounded-lg overflow-hidden text-sm text-center z-50 select-none">
         <div className="bg-[#FAFAFA] px-7 py-3">
           <p className="text-lg mb-3">{shutDownScreen[0].prompt.header}</p>
           <p className="pb-3">{shutDownScreen[0].prompt.body}</p>
