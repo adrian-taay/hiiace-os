@@ -50,6 +50,7 @@ function ShutDownUI() {
   //   } else return;
   // }, [showLines]);
 
+  // Adds each line to the showLines array which is then rendered to the UI.
   useEffect(() => {
     if (index > lineProcess.length - 1) {
       return;
@@ -63,8 +64,17 @@ function ShutDownUI() {
     return () => clearTimeout(timeoutId);
   }, [index]);
 
+  // Listens for the ENTER keypress only after all lines are rendered.
+  useEffect(() => {
+    const handleEnterKeypress = (e) => {
+      if (e.key === "Enter") window.location.reload();
+    };
+    if (index === lineProcess.length - 1)
+      document.addEventListener("keydown", handleEnterKeypress);
+  });
+
   return (
-    <div className="absolute w-full p-4 text-sm">
+    <div className="absolute w-full h-full p-4 text-sm bg-stone-900 text-stone-300 z-30">
       <div className="w-full text-center my-6">Hiiace OS 24.04</div>
       <ul>
         {showLines && showLines.length
@@ -73,15 +83,20 @@ function ShutDownUI() {
                 <li key={index} className="flex justify-between items-center">
                   <span className="flex-none px-2">*</span>
                   <span className="flex-1">{item}</span>
-                  <span>[ OK ]</span>
+                  <span>
+                    [ <span className="text-lime-500 font-semibold">OK</span> ]
+                  </span>
                 </li>
               );
             })
           : null}
         {index < lineProcess.length ? null : (
-          <li>
-            Please remove installation media and close the tray (if any) then
-            press ENTER:
+          <li className="flex justify-between items-center">
+            <span className="flex-none px-2 self-start">*</span>
+            <span className="flex-1">
+              Please remove installation media and close the tray (if any) then
+              press ENTER:
+            </span>
           </li>
         )}
       </ul>

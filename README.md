@@ -78,7 +78,7 @@ _\* Unmounting temporary filesystems... [OK]_
 
 I didn't know that I can't use setTimeout inside Array.map the way I want it to behave.
 
-I used two useEffects.
+Listens for the ENTER keypress only after all lines are rendered.
 
 **Future Apps and Features in mind right now:**
 

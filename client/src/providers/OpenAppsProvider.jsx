@@ -1,5 +1,8 @@
 import PropTypes from "prop-types";
 import { createContext, useReducer } from "react";
+import ShutDownUI from "../components/ShutDownScreen/ShutDownUI";
+import RestartUI from "../components/ShutDownScreen/RestartUI";
+import LockUI from "../components/ShutDownScreen/LockUI";
 
 export const OpenAppsContext = createContext();
 
@@ -28,10 +31,38 @@ function reducer(state, action) {
   }
 }
 
+function options(state, action) {
+  switch (action.type) {
+    case "shut-down":
+      return state.filter((item) => item.option === action.payload);
+    case "restart":
+      return state.filter((item) => item.option === action.payload);
+    case "lock":
+      return state.filter((item) => item.option === action.payload);
+  }
+}
+
+const screenStates = [
+  {
+    option: "restart",
+    content: <RestartUI />,
+  },
+  {
+    option: "lock",
+    content: <LockUI />,
+  },
+  {
+    option: "shut-down",
+    content: <ShutDownUI />,
+  },
+];
+
 export default function OpenAppsProvider({ children }) {
   const [openApps, dispatch] = useReducer(reducer, []);
 
-  const settings = { openApps, dispatch };
+  const [shutDownScreen, command] = useReducer(options, screenStates);
+
+  const settings = { openApps, dispatch, shutDownScreen, command };
 
   return (
     <>
