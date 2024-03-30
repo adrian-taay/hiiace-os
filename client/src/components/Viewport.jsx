@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { OpenAppsContext } from "../providers/OpenAppsProvider";
 import Window from "./Window";
 import ConkyLinux from "./ConkyLinux/ConkyLinux";
+import ShutDownUI from "./ShutDownUI/ShutDownUI";
 
 function Viewport() {
   const viewportWidth = document.body.clientWidth;
@@ -11,6 +12,7 @@ function Viewport() {
   return (
     <>
       <ConkyLinux />
+      <ShutDownUI />
       <div>
         {openApps.map((item, index) => {
           return item.minimized ? null : (

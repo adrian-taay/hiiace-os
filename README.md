@@ -15,7 +15,7 @@ I want it to look like a desktop environment that is loosely based on how my cur
 - ArcMenu
 - Conky Linux
 
-\*\*Tools =>
+Tools:
 
 - react-rnd: To make windows resizable and draggable
 - react-icons: Icons and logos
@@ -36,7 +36,7 @@ For the taskbar, I prefer the Windows setup as it is simple and it doesn't occup
 
 Uses basic useState hooks. Comes with react-calendar which does nothing but to imitate a time and date popup.
 
-\*\*Tools =>
+Tools:
 
 - react-calendar: A basic calendar
 
@@ -67,6 +67,18 @@ Or Rainmeter if you will. Uses basic styling.
 **MUSIC PLAYER**
 
 Followed this tutorial https://www.youtube.com/watch?v=KIwgfJF_gEk. Will refactor this in the future where both the music player and Conky music display are in sync.
+
+**SHUT DOWN UI**
+
+Imitates the next thing you see after shutting down. Black screen that displays lines that indicate a process that has turned off
+
+_\* Deconfiguring network interfaces... [OK]_
+
+_\* Unmounting temporary filesystems... [OK]_
+
+I didn't know that I can't use setTimeout inside Array.map the way I want it to behave.
+
+I used two useEffects.
 
 **Future Apps and Features in mind right now:**
 

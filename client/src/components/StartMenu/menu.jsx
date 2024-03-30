@@ -1,11 +1,15 @@
 import Calculator from "../Calculator/Calculator";
 import WelcomeScreen from "../WelcomeScreen/WelcomeScreen";
 import Test from "../WelcomeScreen/Test";
-import { LuInfo } from "react-icons/lu";
 import { FaInfoCircle, FaSpotify } from "react-icons/fa";
 import { PiTerminalWindow } from "react-icons/pi";
-import {} from "react-icons/fa";
-import { FcCalculator, FcFolder, FcIdea, FcTodoList } from "react-icons/fc";
+import {
+  FcCalculator,
+  FcFolder,
+  FcIdea,
+  FcLike,
+  FcTodoList,
+} from "react-icons/fc";
 import {
   FaBrain,
   FaFilePdf,
@@ -15,6 +19,7 @@ import {
   FaTwitter,
 } from "react-icons/fa6";
 import { SiCircleci } from "react-icons/si";
+import {} from "react-icons/fc";
 
 const iconSize = 24;
 const sideIconSize = 14;
@@ -40,9 +45,9 @@ export const menu = [
   },
   {
     id: 3,
-    title: "SpotiPHy",
+    title: "Playrr",
     content: "",
-    icon: <FaSpotify size={iconSize} color="#1ED760" />,
+    icon: <FaSpotify size={iconSize} color="#1FA1EF" />,
   },
   {
     id: 4,
@@ -61,6 +66,12 @@ export const menu = [
     title: "Terminal",
     content: "",
     icon: <PiTerminalWindow size={iconSize} />,
+  },
+  {
+    id: 7,
+    title: "Rate My Work",
+    content: "",
+    icon: <FcLike size={iconSize} />,
   },
 ];
 
