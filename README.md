@@ -68,7 +68,7 @@ Or Rainmeter if you will. Uses basic styling.
 
 Followed this tutorial https://www.youtube.com/watch?v=KIwgfJF_gEk. Will refactor this in the future where both the music player and Conky music display are in sync.
 
-**SHUT DOWN UI**
+**SHUT DOWN OPTIONS**
 
 Imitates the next thing you see after shutting down. Black screen that displays lines that indicate a process that has turned off
 
