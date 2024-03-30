@@ -1,7 +1,7 @@
 import { useContext } from "react";
-import { OpenAppsContext } from "../providers/OpenAppsProvider";
-import Window from "./Window";
-import ConkyLinux from "./ConkyLinux/ConkyLinux";
+import { OpenAppsContext } from "../../providers/OpenAppsProvider";
+import Window from "../../templates/Window";
+import ConkyLinux from "../../components/ConkyLinux/ConkyLinux";
 
 function Viewport() {
   const viewportWidth = document.body.clientWidth;
@@ -30,7 +30,7 @@ function Viewport() {
           );
         })}
       </div>
-      {shutDownScreen.length === 1 ? shutDownScreen[0].content : null}
+      {shutDownScreen.length === 1 ? shutDownScreen[0].modal : null}
     </>
   );
 }

@@ -5,7 +5,7 @@ import TwitterLogo from "../../assets/icons/icons8-twitter-96.png";
 import InstagramLogo from "../../assets/icons/icons8-instagram-96.png";
 import { FaFilePdf } from "react-icons/fa6";
 
-function WelcomeScreen() {
+function Welcome() {
   const [iconWidth] = useState(42);
 
   return (
@@ -75,4 +75,4 @@ function WelcomeScreen() {
   );
 }
 
-export default WelcomeScreen;
+export default Welcome;

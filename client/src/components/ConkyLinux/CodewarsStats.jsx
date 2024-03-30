@@ -1,8 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 function CodewarsStats() {
-  const [stats, setStats] = useState({});
-
   async function getStats() {
     const response = await fetch(
       "https://github.r2v.ch/codewars?user=adrian.taay",

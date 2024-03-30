@@ -1,6 +1,5 @@
 import Calculator from "../Calculator/Calculator";
-import WelcomeScreen from "../WelcomeScreen/WelcomeScreen";
-import Test from "../WelcomeScreen/Test";
+import Welcome from "../Welcome/Welcome";
 import { FaInfoCircle, FaSpotify } from "react-icons/fa";
 import { PiTerminalWindow } from "react-icons/pi";
 import {
@@ -19,7 +18,6 @@ import {
   FaTwitter,
 } from "react-icons/fa6";
 import { SiCircleci } from "react-icons/si";
-import {} from "react-icons/fc";
 
 const iconSize = 24;
 const sideIconSize = 14;
@@ -28,13 +26,13 @@ export const menu = [
   {
     id: 0,
     title: "Documents",
-    content: <Test />,
+    content: "",
     icon: <FcFolder size={iconSize} />,
   },
   {
     id: 1,
     title: "Welcome",
-    content: <WelcomeScreen />,
+    content: <Welcome />,
     icon: <FcIdea size={iconSize} />,
   },
   {

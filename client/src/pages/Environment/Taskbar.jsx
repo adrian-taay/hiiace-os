@@ -1,10 +1,10 @@
 import { useContext, useState } from "react";
-import TimeDate from "./TimeDate/TimeDate";
-import TimeDateSettings from "./TimeDate/TimeDateSettings";
+import { OpenAppsContext } from "../../providers/OpenAppsProvider";
+import TimeDate from "../../components/TimeDate/TimeDate";
+import TimeDateSettings from "../../components/TimeDate/TimeDateSettings";
+import StartMenuPopup from "../../components/StartMenu/StartMenuPopup";
 import { FiChevronUp, FiSun } from "react-icons/fi";
 import { FcRating } from "react-icons/fc";
-import StartMenuPopup from "./StartMenu/StartMenuPopup";
-import { OpenAppsContext } from "../providers/OpenAppsProvider";
 
 function Taskbar() {
   // Start Menu

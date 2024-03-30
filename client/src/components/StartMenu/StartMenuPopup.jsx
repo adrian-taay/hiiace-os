@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { menu } from "./menu.jsx";
 import PropTypes from "prop-types";
-import { OpenAppsContext } from "../../providers/OpenAppsProvider.jsx";
+import { OpenAppsContext } from "../../providers/OpenAppsProvider";
 import { motion } from "framer-motion";
 import Sidebar from "./Sidebar.jsx";
 

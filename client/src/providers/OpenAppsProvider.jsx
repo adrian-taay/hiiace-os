@@ -1,8 +1,9 @@
 import PropTypes from "prop-types";
-import { createContext, useReducer } from "react";
-import ShutDownUI from "../components/ShutDownScreen/ShutDownUI";
-import RestartUI from "../components/ShutDownScreen/RestartUI";
-import LockUI from "../components/ShutDownScreen/LockUI";
+import { createContext, useReducer, useState } from "react";
+import ShutDownUI from "../pages/Screen/ShutDownUI";
+import RestartUI from "../pages/Screen/RestartUI";
+import LockUI from "../pages/Screen/LockUI";
+import ModalWindow from "../templates/ModalWindow";
 
 export const OpenAppsContext = createContext();
 
@@ -39,30 +40,54 @@ function options(state, action) {
       return state.filter((item) => item.option === action.payload);
     case "lock":
       return state.filter((item) => item.option === action.payload);
+    case "cancel":
+      return screenStates;
   }
 }
 
 const screenStates = [
   {
     option: "restart",
+    prompt: {
+      header: "Restart",
+      body: "The system will restart automatically in 10 seconds.",
+    },
+    modal: <ModalWindow />,
     content: <RestartUI />,
   },
   {
     option: "lock",
+    prompt: null,
+    modal: null,
     content: <LockUI />,
   },
   {
     option: "shut-down",
+    prompt: {
+      header: "Power Off",
+      body: "The system will power off automatically in 10 seconds.",
+    },
+    modal: <ModalWindow />,
     content: <ShutDownUI />,
   },
 ];
 
 export default function OpenAppsProvider({ children }) {
   const [openApps, dispatch] = useReducer(reducer, []);
-
   const [shutDownScreen, command] = useReducer(options, screenStates);
 
-  const settings = { openApps, dispatch, shutDownScreen, command };
+  const [showScreen, setShowScreen] = useState(false);
+
+  const settings = {
+    openApps,
+    dispatch,
+    shutDownScreen,
+    command,
+    showScreen,
+    setShowScreen,
+  };
+
+  console.log(shutDownScreen);
 
   return (
     <>
@@ -74,5 +99,5 @@ export default function OpenAppsProvider({ children }) {
 }
 
 OpenAppsProvider.propTypes = {
-  children: PropTypes.array,
+  children: PropTypes.object,
 };

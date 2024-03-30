@@ -1,21 +1,11 @@
-import Taskbar from "./components/Taskbar";
-import OpenAppsProvider from "./providers/OpenAppsProvider";
-import TimeProvider from "./providers/TimeProvider";
-import Viewport from "./components/Viewport";
+import { useContext } from "react";
+import Environment from "./pages/Environment/Environment";
+import Screen from "./pages/Screen/Screen";
+import { OpenAppsContext } from "./providers/OpenAppsProvider";
 
 function App() {
-  return (
-    <>
-      <TimeProvider>
-        <OpenAppsProvider>
-          <div className="w-full h-screen bg-[url('./assets/bg-wallpaper.jpg')] bg-cover bg-center">
-            <Viewport />
-          </div>
-          <Taskbar />
-        </OpenAppsProvider>
-      </TimeProvider>
-    </>
-  );
+  const { showScreen } = useContext(OpenAppsContext);
+  return <>{showScreen ? <Screen /> : <Environment />}</>;
 }
 
 export default App;
