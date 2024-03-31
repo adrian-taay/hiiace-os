@@ -6,10 +6,15 @@ import { sidemenu } from "./menu";
 import { OpenAppsContext } from "../../providers/OpenAppsProvider";
 
 function Sidebar({ setShowStartMenu }) {
-  const { command } = useContext(OpenAppsContext);
+  const { command, setShowLockUI } = useContext(OpenAppsContext);
 
   function handlePress(id) {
     command({ type: id, payload: id });
+    setShowStartMenu(false);
+  }
+
+  function handleLockUIPress() {
+    setShowLockUI(true);
     setShowStartMenu(false);
   }
 
@@ -41,7 +46,7 @@ function Sidebar({ setShowStartMenu }) {
           />
         </div>
         <div className="hover:bg-stone-900 hover:bg-opacity-60 p-1.5">
-          <RiLock2Fill id="lock" onClick={(e) => handlePress(e.target.id)} />
+          <RiLock2Fill id="lock" onClick={handleLockUIPress} />
         </div>
         <div className="hover:bg-stone-900 hover:bg-opacity-60 p-1.5">
           <RiShutDownLine

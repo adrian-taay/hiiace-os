@@ -80,6 +80,12 @@ I didn't know that I can't use setTimeout inside Array.map the way I want it to 
 
 Listens for the ENTER keypress only after all lines are rendered.
 
+**LOCK SCREEN**
+
+Imitates the lock screen. Only unlocks by pressing Enter
+
+- Unsplash API
+
 **Future Apps and Features in mind right now:**
 
 **WEATHER APP**
@@ -95,3 +101,7 @@ Fetches data from https://openweathermap.org/api
 **MATHEL MEMORY**
 
 JS game I made during bootcamp
+
+**NOTION**
+
+Fetch my diary using Notion API
