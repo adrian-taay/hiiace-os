@@ -2,7 +2,6 @@ import PropTypes from "prop-types";
 import { createContext, useReducer, useState } from "react";
 import ShutDownUI from "../pages/Screen/ShutDownUI";
 import RestartUI from "../pages/Screen/RestartUI";
-import LockUI from "../pages/Screen/LockUI";
 import ModalWindow from "../templates/ModalWindow";
 
 export const OpenAppsContext = createContext();
@@ -38,8 +37,6 @@ function options(state, action) {
       return state.filter((item) => item.option === action.payload);
     case "restart":
       return state.filter((item) => item.option === action.payload);
-    case "lock":
-      return state.filter((item) => item.option === action.payload);
     case "cancel":
       return screenStates;
   }
@@ -54,12 +51,6 @@ const screenStates = [
     },
     modal: <ModalWindow />,
     content: <RestartUI />,
-  },
-  {
-    option: "lock",
-    prompt: null,
-    modal: null,
-    content: <LockUI />,
   },
   {
     option: "shut-down",
@@ -77,6 +68,7 @@ export default function OpenAppsProvider({ children }) {
   const [shutDownScreen, command] = useReducer(options, screenStates);
 
   const [showScreen, setShowScreen] = useState(false);
+  const [showLockUI, setShowLockUI] = useState(false);
 
   console.log(shutDownScreen);
 
@@ -87,6 +79,8 @@ export default function OpenAppsProvider({ children }) {
     command,
     showScreen,
     setShowScreen,
+    showLockUI,
+    setShowLockUI,
   };
 
   return (

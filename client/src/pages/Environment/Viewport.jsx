@@ -1,20 +1,13 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { OpenAppsContext } from "../../providers/OpenAppsProvider";
 import Window from "../../templates/Window";
 import ConkyLinux from "../../components/ConkyLinux/ConkyLinux";
+import LockUI from "../Screen/LockUI";
 
 function Viewport() {
   const viewportWidth = document.body.clientWidth;
   const viewportHeight = document.body.clientHeight;
-  const { openApps, shutDownScreen, setShowScreen } =
-    useContext(OpenAppsContext);
-
-  // I didn't know that I can create error handling outside the JSX.
-  useEffect(() => {
-    if (shutDownScreen[0].modal == undefined) {
-      setShowScreen(true);
-    }
-  });
+  const { openApps, shutDownScreen, showLockUI } = useContext(OpenAppsContext);
 
   return (
     <>
@@ -38,7 +31,10 @@ function Viewport() {
           );
         })}
       </div>
-      {shutDownScreen.length === 1 ? shutDownScreen[0].modal : null}
+      {shutDownScreen && shutDownScreen.length && shutDownScreen.length === 1
+        ? shutDownScreen[0].modal
+        : null}
+      {showLockUI ? <LockUI /> : null}
     </>
   );
 }

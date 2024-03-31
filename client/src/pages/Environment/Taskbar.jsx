@@ -23,7 +23,7 @@ function Taskbar() {
 
   return (
     <>
-      <div className="absolute bottom-0 bg-stone-900 opacity-80 w-full h-10 flex items-center text-white select-none overflow-hidden">
+      <div className="absolute bottom-0 bg-stone-900 opacity-80 w-full h-10 flex items-center text-white select-none overflow-hidden z-20">
         <div
           className="flex items-center hover:bg-white hover:bg-opacity-20 p-2.5"
           onClick={() => setShowStartMenu(!showStartMenu)}
