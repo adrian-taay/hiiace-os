@@ -27,7 +27,15 @@ const lineProcess = [
   },
   {
     line: "casper is resyncing snapshots and caching reboot files...",
-    t: 500,
+    t: 1000,
+  },
+  {
+    line: "",
+    t: 1000,
+  },
+  {
+    line: `Many thanks to Uplift Code Camp. This would not be possible if you and I had not crossed paths.`,
+    t: 1000,
   },
 ];
 
