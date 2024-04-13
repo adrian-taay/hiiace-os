@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { OpenAppsContext } from "../../providers/OpenAppsProvider";
 import TimeDate from "../../components/TimeDate/TimeDate";
-import TimeDateSettings from "../../components/TimeDate/TimeDateSettings";
+import TimeDatePopup from "../../components/TimeDate/TimeDatePopup";
 import StartMenuPopup from "../../components/StartMenu/StartMenuPopup";
 import { FiChevronUp, FiSun } from "react-icons/fi";
 import { FcRating } from "react-icons/fc";
@@ -14,11 +14,11 @@ function Taskbar() {
   // Time and Date
   const [shortDate, setShortDate] = useState(false);
   const [twelveHour, setTwelveHour] = useState(false);
-  const [showTimeDateSettings, setShowTimeDateSettings] = useState(false);
+  const [showTimeDatePopup, setShowTimeDatePopup] = useState(false);
 
   // Show Time and Date settings
-  function handleShowTimeDateSettings() {
-    setShowTimeDateSettings(!showTimeDateSettings);
+  function handleShowTimeDatePopup() {
+    setShowTimeDatePopup(!showTimeDatePopup);
   }
 
   return (
@@ -55,7 +55,7 @@ function Taskbar() {
           </div>
           <div>
             <span
-              onClick={() => handleShowTimeDateSettings()}
+              onClick={() => handleShowTimeDatePopup()}
               className="flex hover:bg-white hover:bg-opacity-20 p-2.5"
             >
               <TimeDate shortDate={shortDate} twelveHour={twelveHour} />
@@ -74,9 +74,10 @@ function Taskbar() {
         <StartMenuPopup setShowStartMenu={setShowStartMenu} />
       ) : null}
 
-      {showTimeDateSettings ? (
-        <TimeDateSettings
-          setShowTimeDateSettings={setShowTimeDateSettings}
+      {showTimeDatePopup ? (
+        <TimeDatePopup
+          shortDate={shortDate}
+          setShowTimeDatePopup={setShowTimeDatePopup}
           setShortDate={setShortDate}
           setTwelveHour={setTwelveHour}
           twelveHour={twelveHour}
