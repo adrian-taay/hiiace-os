@@ -15,7 +15,8 @@
     "react-calendar": "^4.8.0",
     "react-dom": "^18.2.0",
     "react-icons": "^5.0.1",
-    "react-rnd": "^10.4.1"
+    "react-rnd": "^10.4.1",
+    "weather-react-icons": "^4.0.2"
   },
   "devDependencies": {
     "@types/react": "^18.2.56",

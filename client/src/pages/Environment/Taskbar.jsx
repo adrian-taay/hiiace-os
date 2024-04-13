@@ -1,10 +1,14 @@
 import { useContext, useState } from "react";
 import { OpenAppsContext } from "../../providers/OpenAppsProvider";
+import { WeatherContext } from "../../providers/WeatherProvider";
 import TimeDate from "../../components/TimeDate/TimeDate";
 import TimeDatePopup from "../../components/TimeDate/TimeDatePopup";
 import StartMenuPopup from "../../components/StartMenu/StartMenuPopup";
-import { FiChevronUp, FiSun } from "react-icons/fi";
+import { FiChevronUp } from "react-icons/fi";
 import { FcRating } from "react-icons/fc";
+import WeatherPopup from "../../components/Weather/WeatherPopup";
+import "weather-react-icons/lib/css/weather-icons.css";
+import { WeatherIcon } from "weather-react-icons";
 
 function Taskbar() {
   // Start Menu
@@ -15,6 +19,10 @@ function Taskbar() {
   const [shortDate, setShortDate] = useState(false);
   const [twelveHour, setTwelveHour] = useState(false);
   const [showTimeDatePopup, setShowTimeDatePopup] = useState(false);
+
+  // Weather App
+  const { mainWeatherIcon, isDayTime } = useContext(WeatherContext);
+  const [showWeatherPopup, setShowWeatherPopup] = useState(false);
 
   // Show Time and Date settings
   function handleShowTimeDatePopup() {
@@ -50,8 +58,20 @@ function Taskbar() {
           <div className="hover:bg-white hover:bg-opacity-20 p-3">
             <FiChevronUp />
           </div>
-          <div className="hover:bg-white hover:bg-opacity-20 p-3">
-            <FiSun />
+          <div
+            className="hover:bg-white hover:bg-opacity-20 p-3"
+            onClick={() => setShowWeatherPopup(!showWeatherPopup)}
+          >
+            <span>
+              {mainWeatherIcon ? (
+                <WeatherIcon
+                  iconId={mainWeatherIcon}
+                  name="owm"
+                  className="text-lg"
+                  night={!isDayTime}
+                />
+              ) : null}
+            </span>
           </div>
           <div>
             <span
@@ -82,6 +102,10 @@ function Taskbar() {
           setTwelveHour={setTwelveHour}
           twelveHour={twelveHour}
         />
+      ) : null}
+
+      {showWeatherPopup ? (
+        <WeatherPopup setShowWeatherPopup={setShowWeatherPopup} />
       ) : null}
     </>
   );

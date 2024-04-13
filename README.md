@@ -90,7 +90,8 @@ Imitates the lock screen. Only unlocks by pressing Enter
 
 **WEATHER APP**
 
-Fetches data from https://openweathermap.org/api
+- Fetches data from https://openweathermap.org/api
+- Uses weather icons https://www.npmjs.com/package/weather-react-icons
 
 **TO-DO APP**
 
