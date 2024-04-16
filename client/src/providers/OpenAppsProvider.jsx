@@ -70,8 +70,6 @@ export default function OpenAppsProvider({ children }) {
   const [showScreen, setShowScreen] = useState(false);
   const [showLockUI, setShowLockUI] = useState(false);
 
-  console.log(shutDownScreen);
-
   const settings = {
     openApps,
     dispatch,

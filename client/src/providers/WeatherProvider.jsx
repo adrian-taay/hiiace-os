@@ -46,8 +46,6 @@ export default function WeatherProvider({ children }) {
 
   const settings = { weatherData, mainWeatherIcon, isDayTime };
 
-  console.log(weatherData);
-
   return (
     <>
       <WeatherContext.Provider value={settings}>
