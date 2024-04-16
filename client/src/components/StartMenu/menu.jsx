@@ -1,5 +1,6 @@
 import Calculator from "../Calculator/Calculator";
 import Welcome from "../Welcome/Welcome";
+import ToDoApp from "../ToDoApp/ToDoApp";
 import { FaInfoCircle, FaSpotify } from "react-icons/fa";
 import { PiTerminalWindow } from "react-icons/pi";
 import {
@@ -56,7 +57,7 @@ export const menu = [
   {
     id: 5,
     title: "To-Do App",
-    content: "",
+    content: <ToDoApp />,
     icon: <FcTodoList size={iconSize} />,
   },
   {
