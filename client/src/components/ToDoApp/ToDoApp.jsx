@@ -1,4 +1,5 @@
-import { useContext, useState } from "react";
+import { useContext, useRef, useState } from "react";
+import { useDraggable } from "react-use-draggable-scroll";
 import { TimeContext } from "../../providers/TimeProvider";
 import { RxDotFilled } from "react-icons/rx";
 import { IoMdCheckmarkCircle, IoMdCloseCircle } from "react-icons/io";
@@ -11,6 +12,9 @@ function ToDoApp() {
     { id: 1, name: "Play Mathel Memory", status: "completed" },
   ]);
   const [inputTodo, setInputTodo] = useState("");
+
+  const ref = useRef();
+  const { events } = useDraggable(ref);
 
   function handleAddTodo() {
     if (inputTodo.trim() === "") return;
@@ -71,7 +75,11 @@ function ToDoApp() {
       </div>
       <div>
         <h1 className="text-sm mb-2">On-going Tasks</h1>
-        <ul className="flex flex-col text-sm">
+        <ul
+          className="flex flex-col h-28 text-sm overflow-y-scroll scrollbar-hide"
+          {...events}
+          ref={ref}
+        >
           {todoList
             .filter((item) => item.status === "ongoing")
             .sort((a, b) => a.startTime - b.startTime)
@@ -103,7 +111,11 @@ function ToDoApp() {
       </div>
       <div>
         <h1 className="text-sm my-2">Completed Tasks</h1>
-        <ul className="flex flex-col text-sm">
+        <ul
+          className="flex flex-col text-sm overflow-y-scroll scrollbar-hide h-28"
+          {...events}
+          ref={ref}
+        >
           {todoList
             .filter((item) => item.status === "completed")
             .sort((a, b) => a.endTime - b.endTime)

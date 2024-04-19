@@ -2,7 +2,7 @@ import Calculator from "../Calculator/Calculator";
 import Welcome from "../Welcome/Welcome";
 import ToDoApp from "../ToDoApp/ToDoApp";
 import RateMyWork from "../RateMyWork/RateMyWork";
-import { FaInfoCircle, FaSpotify } from "react-icons/fa";
+import { FaInfoCircle } from "react-icons/fa";
 import { PiTerminalWindow } from "react-icons/pi";
 import {
   FcCalculator,
@@ -20,6 +20,7 @@ import {
   FaTwitter,
 } from "react-icons/fa6";
 import { SiCircleci } from "react-icons/si";
+import BearTypeLogo from "../../assets/icons/icons8-bear-96.png";
 
 const iconSize = 24;
 const sideIconSize = 14;
@@ -30,48 +31,64 @@ export const menu = [
     title: "Documents",
     content: "",
     icon: <FcFolder size={iconSize} />,
+    minWidth: 550,
+    minHeight: 380,
   },
   {
     id: 1,
     title: "Welcome",
     content: <Welcome />,
     icon: <FcIdea size={iconSize} />,
+    minWidth: 550,
+    minHeight: 380,
   },
   {
     id: 2,
     title: "Calculator",
     content: <Calculator />,
     icon: <FcCalculator size={iconSize} />,
+    minWidth: 200,
+    minHeight: 325,
   },
   {
     id: 3,
-    title: "Playrr",
+    title: "Bear Type",
     content: "",
-    icon: <FaSpotify size={iconSize} color="#1FA1EF" />,
+    icon: <img src={BearTypeLogo} width={iconSize} />,
+    minWidth: 550,
+    minHeight: 380,
   },
   {
     id: 4,
     title: "Mathel Memory",
     content: "",
     icon: <FaBrain size={iconSize} color="#FFCACA" />,
+    minWidth: 550,
+    minHeight: 380,
   },
   {
     id: 5,
     title: "To-Do App",
     content: <ToDoApp />,
     icon: <FcTodoList size={iconSize} />,
+    minWidth: 375,
+    minHeight: 500,
   },
   {
     id: 6,
     title: "Terminal",
     content: "",
     icon: <PiTerminalWindow size={iconSize} />,
+    minWidth: 550,
+    minHeight: 380,
   },
   {
     id: 7,
     title: "Rate My Work",
     content: <RateMyWork />,
     icon: <FcLike size={iconSize} />,
+    minWidth: 380,
+    minHeight: 450,
   },
 ];
 

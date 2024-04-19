@@ -16,8 +16,8 @@ function Window({ id, title, content, zindex, dimensions }) {
         default={dimensions}
         minWidth={dimensions.width}
         minHeight={dimensions.height}
-        cancel=".content"
-        className="bg-neutral-200 rounded-t-lg rounded-b-sm drop-shadow-lg"
+        cancel=".content, .buttons"
+        className="bg-neutral-200 rounded-t-lg rounded-b-sm drop-shadow-lg overflow-hidden"
         style={{ zIndex: zindex }}
         onDrag={() => dispatch({ type: "active-app", payload: { id: id } })}
         onClick={() => dispatch({ type: "active-app", payload: { id: id } })}
@@ -25,7 +25,7 @@ function Window({ id, title, content, zindex, dimensions }) {
         <div className="flex flex-wrap z-20 cursor-auto">
           <div className="title-bar flex items-center justify-center w-full h-9 bg-neutral-800 rounded-t-lg text-white text-xs font-semibold">
             <p className="cursor-default">{title}</p>
-            <div className="absolute right-3 buttons flex gap-3 items-center cursor-pointer">
+            <div className="buttons absolute right-3 buttons flex gap-3 items-center cursor-pointer">
               <MdMinimize
                 size={14}
                 onClick={() =>
@@ -43,7 +43,7 @@ function Window({ id, title, content, zindex, dimensions }) {
               />
             </div>
           </div>
-          <div className="content mx-auto">{content}</div>
+          <div className="content relative mx-auto">{content}</div>
         </div>
       </Rnd>
     </>

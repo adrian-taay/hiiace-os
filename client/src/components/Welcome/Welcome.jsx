@@ -3,6 +3,7 @@ import GitHubLogo from "../../assets/icons/icons8-github-96.png";
 import LinkedInLogo from "../../assets/icons/icons8-linkedin-96.png";
 import TwitterLogo from "../../assets/icons/icons8-twitter-96.png";
 import InstagramLogo from "../../assets/icons/icons8-instagram-96.png";
+import SanwichLogo from "../../assets/icons/icons8-sandwich-96.png";
 import { FaFilePdf } from "react-icons/fa6";
 
 function Welcome() {
@@ -13,9 +14,7 @@ function Welcome() {
       <div className="flex ">
         <div className="w-1/3 pt-4">
           <img
-            src={
-              "https://upload.wikimedia.org/wikipedia/commons/0/07/Ubuntu_MATE_rondel_logo.svg"
-            }
+            src={SanwichLogo}
             alt="Ubuntu MATE Logo. Yep I'll replace it"
             className="mx-auto"
           />

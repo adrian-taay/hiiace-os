@@ -1,4 +1,5 @@
-import { useContext, useState } from "react";
+import { useContext, useRef, useState } from "react";
+import { useDraggable } from "react-use-draggable-scroll";
 import { OpenAppsContext } from "../../providers/OpenAppsProvider";
 import { WeatherContext } from "../../providers/WeatherProvider";
 import TimeDate from "../../components/TimeDate/TimeDate";
@@ -14,6 +15,10 @@ function Taskbar() {
   // Start Menu
   const [showStartMenu, setShowStartMenu] = useState(false);
   const { openApps, dispatch } = useContext(OpenAppsContext);
+
+  // Open Apps
+  const scrollRef = useRef();
+  const { events } = useDraggable(scrollRef);
 
   // Time and Date
   const [shortDate, setShortDate] = useState(false);
@@ -39,7 +44,11 @@ function Taskbar() {
           <FcRating size={24} />
           <p className="ml-2 text-sm">Start</p>
         </div>
-        <div className="ml-1 flex-1 flex">
+        <div
+          className="ml-1 flex-1 flex overflow-x-scroll scrollbar-hide"
+          {...events}
+          ref={scrollRef}
+        >
           {openApps.map((item, index) => {
             return (
               <div

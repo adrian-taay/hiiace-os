@@ -22,10 +22,10 @@ function Viewport() {
               content={item.content}
               zindex={item.zindex}
               dimensions={{
-                x: (viewportWidth - 550) / 2 + index * 25,
-                y: (viewportHeight - 550) / 2 + index * 25,
-                width: 550,
-                height: 380,
+                x: (viewportWidth - item.minWidth) / 2 + index * 25,
+                y: (viewportHeight - item.minWidth) / 2 + index * 25,
+                width: item.minWidth,
+                height: item.minHeight,
               }}
             />
           );
