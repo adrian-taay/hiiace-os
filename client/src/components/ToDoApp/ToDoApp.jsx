@@ -13,6 +13,8 @@ function ToDoApp() {
   const [inputTodo, setInputTodo] = useState("");
 
   function handleAddTodo() {
+    if (inputTodo.trim() === "") return;
+
     setTodoList((t) => [
       ...t,
       {
@@ -38,6 +40,10 @@ function ToDoApp() {
           : item
       )
     );
+  }
+
+  function handleDeleteTask(id) {
+    setTodoList((items) => items.filter((item) => item.id !== id));
   }
 
   return (
@@ -88,6 +94,7 @@ function ToDoApp() {
                     size={18}
                     color="grey"
                     className="hover:fill-red-600"
+                    onClick={() => handleDeleteTask(item.id)}
                   />
                 </li>
               );
@@ -117,6 +124,7 @@ function ToDoApp() {
                     size={18}
                     color="grey"
                     className="hover:fill-red-600"
+                    onClick={() => handleDeleteTask(item.id)}
                   />
                 </li>
               );

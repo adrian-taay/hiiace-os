@@ -1,6 +1,7 @@
 import Calculator from "../Calculator/Calculator";
 import Welcome from "../Welcome/Welcome";
 import ToDoApp from "../ToDoApp/ToDoApp";
+import RateMyWork from "../RateMyWork/RateMyWork";
 import { FaInfoCircle, FaSpotify } from "react-icons/fa";
 import { PiTerminalWindow } from "react-icons/pi";
 import {
@@ -69,7 +70,7 @@ export const menu = [
   {
     id: 7,
     title: "Rate My Work",
-    content: "",
+    content: <RateMyWork />,
     icon: <FcLike size={iconSize} />,
   },
 ];
