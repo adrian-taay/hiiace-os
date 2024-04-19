@@ -26,7 +26,7 @@ Tools:
 For the taskbar, I prefer the Windows setup as it is simple and it doesn't occupy much screen height. Uses basic conditional rendering.
 
 - Start Menu: ArcMenu look
-- Active Windows
+- Active Windows (uses react-use-draggable-scroll)
 - Taskbar settings
 - Weather app
 - Time and Date
