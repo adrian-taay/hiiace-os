@@ -43,7 +43,7 @@ function Window({ id, title, content, zindex, dimensions }) {
               />
             </div>
           </div>
-          <div className="content h-full">{content}</div>
+          <div className="content mx-auto">{content}</div>
         </div>
       </Rnd>
     </>
