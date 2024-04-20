@@ -8,14 +8,25 @@ import Sidebar from "./Sidebar.jsx";
 function StartMenuPopup({ setShowStartMenu }) {
   const { dispatch } = useContext(OpenAppsContext);
 
+  const viewportWidth = document.body.clientWidth;
+  const viewportHeight = document.body.clientHeight;
+
   function handleOpenApp(itemIndex) {
     dispatch({
       type: "open-app",
       payload: {
         ...menu[itemIndex],
         minimized: false,
-        maximized: document.body.clientWidth <= 480,
+        maximized: false,
         zindex: 1,
+        position: {
+          x: viewportWidth <= 480 ? 0 : (viewportWidth - 550) / 2,
+          y: (viewportHeight - 40 - 380) / 2,
+        },
+        dimension: {
+          width: viewportWidth <= 480 ? `${viewportWidth}px` : "550px",
+          height: "380px",
+        },
       },
     });
     setShowStartMenu(false);

@@ -5,8 +5,6 @@ import ConkyLinux from "../../components/ConkyLinux/ConkyLinux";
 import LockUI from "../Screen/LockUI";
 
 function Viewport() {
-  const viewportWidth = document.body.clientWidth;
-  const viewportHeight = document.body.clientHeight;
   const { openApps, shutDownScreen, showLockUI } = useContext(OpenAppsContext);
 
   return (
@@ -21,16 +19,11 @@ function Viewport() {
               title={item.title}
               content={item.content}
               zindex={item.zindex}
-              dimensions={{
-                x: item.maximized
-                  ? 0
-                  : (viewportWidth - item.minWidth) / 2 + index * 25,
-                y: item.maximized
-                  ? 0
-                  : (viewportHeight - item.minWidth) / 2 + index * 25,
-                width: item.maximized ? viewportWidth : item.minWidth,
-                height: item.maximized ? viewportHeight - 40 : item.minHeight,
-              }}
+              size={item.dimension}
+              position={item.position}
+              minWidth={item.dimension.width}
+              minHeight={item.minHeight}
+              maximized={item.maximized}
             />
           );
         })}
@@ -44,3 +37,16 @@ function Viewport() {
 }
 
 export default Viewport;
+
+// size={{
+//   width: item.maximized ? viewportWidth : item.minWidth,
+//   height: item.maximized ? viewportHeight - 40 : item.minHeight,
+// }}
+// position={{
+//   x: item.maximized
+//     ? 0
+//     : (viewportWidth - item.minWidth) / 2 + index * 25,
+//   y: item.maximized
+//     ? 0
+//     : (viewportHeight - item.minWidth) / 2 + index * 25,
+// }}

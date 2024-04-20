@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { OpenAppsContext } from "../providers/OpenAppsProvider";
 import { MdMinimize } from "react-icons/md";
 import { FiSquare } from "react-icons/fi";
@@ -7,20 +7,79 @@ import { AiFillCloseCircle } from "react-icons/ai";
 import { Rnd } from "react-rnd";
 
 // Reference at Viewport.jsx
-function Window({ id, title, content, zindex, dimensions }) {
+function Window({
+  id,
+  title,
+  content,
+  zindex,
+  size,
+  position,
+  minWidth,
+  minHeight,
+  maximized,
+}) {
   const { dispatch } = useContext(OpenAppsContext);
+  const [winPosition, setWinPosition] = useState({});
+  const [winDimension, setWinDimension] = useState({});
+
+  const viewportWidth = document.body.clientWidth;
+  const viewportHeight = document.body.clientHeight;
+
+  function handleWindowDrag(_, d) {
+    dispatch({ type: "drag-app", payload: { id: id, x: d.x, y: d.y } });
+    setWinPosition({ x: d.x, y: d.y });
+  }
+
+  function handleWindowResize(e, _, ref) {
+    dispatch({
+      type: "resize-app",
+      payload: {
+        id: id,
+        width: ref.style.width,
+        height: ref.style.height,
+      },
+    });
+    setWinDimension({ width: ref.style.width, height: ref.style.height });
+  }
+
+  function handleToggleMaximize() {
+    if (!maximized) {
+      dispatch({
+        type: "maximize-app",
+        payload: {
+          id: id,
+          x: 0,
+          y: 0,
+          width: viewportWidth,
+          height: viewportHeight - 40,
+        },
+      });
+    } else {
+      dispatch({
+        type: "maximize-app",
+        payload: { id: id, ...winPosition, ...winDimension },
+      });
+    }
+  }
+
+  console.log(winPosition, winDimension);
 
   return (
     <>
       <Rnd
-        default={dimensions}
-        minWidth={dimensions.width}
-        minHeight={dimensions.height}
+        size={size}
+        position={position}
+        minWidth={minWidth}
+        minHeight={minHeight}
         cancel=".content, .buttons"
         className="bg-neutral-200 drop-shadow-lg overflow-hidden"
         style={{ zIndex: zindex }}
         onDrag={() => dispatch({ type: "active-app", payload: { id: id } })}
         onClick={() => dispatch({ type: "active-app", payload: { id: id } })}
+        onDragStop={(_, d) => handleWindowDrag(_, d)}
+        onResizeStop={(e, _, ref) => handleWindowResize(e, _, ref)}
+        disableDragging={maximized}
+        enableResizing={!maximized}
       >
         <div className="flex flex-wrap z-20 cursor-auto">
           <div className="title-bar flex items-center justify-center w-full h-9 bg-neutral-800 text-white text-xs font-semibold">
@@ -35,9 +94,7 @@ function Window({ id, title, content, zindex, dimensions }) {
               <FiSquare
                 fill="white"
                 size={10}
-                onClick={() =>
-                  dispatch({ type: "maximize-app", payload: { id: id } })
-                }
+                onClick={() => handleToggleMaximize()}
               />
               <AiFillCloseCircle
                 size={16}
@@ -62,7 +119,11 @@ Window.propTypes = {
   title: PropTypes.string,
   content: PropTypes.element,
   zindex: PropTypes.number,
-  dimensions: PropTypes.object,
+  size: PropTypes.object,
+  position: PropTypes.object,
+  minWidth: PropTypes.string,
+  minHeight: PropTypes.string,
+  maximized: PropTypes.bool,
 };
 
 export default Window;

@@ -11,7 +11,7 @@ function Welcome() {
 
   return (
     <>
-      <div className="flex ">
+      <div className="flex select-none">
         <div className="w-1/3 pt-4">
           <img
             src={SanwichLogo}

@@ -31,7 +31,38 @@ function reducer(state, action) {
     case "maximize-app":
       return state.map((item) => {
         if (item.id === action.payload.id) {
-          return { ...item, maximized: !item.maximized };
+          return {
+            ...item,
+            maximized: !item.maximized,
+            position: { x: action.payload.x, y: action.payload.y },
+            dimension: {
+              width: action.payload.width,
+              height: action.payload.height,
+            },
+          };
+        }
+        return { ...item };
+      });
+    case "drag-app":
+      return state.map((item) => {
+        if (item.id === action.payload.id) {
+          return {
+            ...item,
+            position: { x: action.payload.x, y: action.payload.y },
+          };
+        }
+        return { ...item };
+      });
+    case "resize-app":
+      return state.map((item) => {
+        if (item.id === action.payload.id) {
+          return {
+            ...item,
+            dimension: {
+              width: action.payload.width,
+              height: action.payload.height,
+            },
+          };
         }
         return { ...item };
       });
