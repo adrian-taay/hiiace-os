@@ -2,6 +2,7 @@ import Calculator from "../Calculator/Calculator";
 import Welcome from "../Welcome/Welcome";
 import ToDoApp from "../ToDoApp/ToDoApp";
 import RateMyWork from "../RateMyWork/RateMyWork";
+import KeyboardTester from "../KeyboardTester/KeyboardTester";
 import { FaInfoCircle } from "react-icons/fa";
 import { PiTerminalWindow } from "react-icons/pi";
 import {
@@ -16,11 +17,11 @@ import {
   FaFilePdf,
   FaGithub,
   FaInstagram,
+  FaKeyboard,
   FaLinkedin,
   FaTwitter,
 } from "react-icons/fa6";
 import { SiCircleci } from "react-icons/si";
-import BearTypeLogo from "../../assets/icons/icons8-bear-96.png";
 
 const iconSize = 24;
 const sideIconSize = 14;
@@ -52,9 +53,9 @@ export const menu = [
   },
   {
     id: 3,
-    title: "Bear Type",
-    content: "",
-    icon: <img src={BearTypeLogo} width={iconSize} />,
+    title: "Keyboard Tester",
+    content: <KeyboardTester />,
+    icon: <FaKeyboard size={iconSize} />,
     minWidth: 550,
     minHeight: 380,
   },

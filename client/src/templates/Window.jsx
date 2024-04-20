@@ -17,13 +17,13 @@ function Window({ id, title, content, zindex, dimensions }) {
         minWidth={dimensions.width}
         minHeight={dimensions.height}
         cancel=".content, .buttons"
-        className="bg-neutral-200 rounded-t-lg rounded-b-sm drop-shadow-lg overflow-hidden"
+        className="bg-neutral-200 drop-shadow-lg overflow-hidden"
         style={{ zIndex: zindex }}
         onDrag={() => dispatch({ type: "active-app", payload: { id: id } })}
         onClick={() => dispatch({ type: "active-app", payload: { id: id } })}
       >
         <div className="flex flex-wrap z-20 cursor-auto">
-          <div className="title-bar flex items-center justify-center w-full h-9 bg-neutral-800 rounded-t-lg text-white text-xs font-semibold">
+          <div className="title-bar flex items-center justify-center w-full h-9 bg-neutral-800 text-white text-xs font-semibold">
             <p className="cursor-default">{title}</p>
             <div className="buttons absolute right-3 buttons flex gap-3 items-center cursor-pointer">
               <MdMinimize
@@ -32,7 +32,13 @@ function Window({ id, title, content, zindex, dimensions }) {
                   dispatch({ type: "minimize-app", payload: { id: id } })
                 }
               />
-              <FiSquare size={10} />
+              <FiSquare
+                fill="white"
+                size={10}
+                onClick={() =>
+                  dispatch({ type: "maximize-app", payload: { id: id } })
+                }
+              />
               <AiFillCloseCircle
                 size={16}
                 fill="rgb(233,84,32)"

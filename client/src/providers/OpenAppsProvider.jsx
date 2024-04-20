@@ -28,6 +28,13 @@ function reducer(state, action) {
       return state.map((item) => {
         return { ...item, minimized: true };
       });
+    case "maximize-app":
+      return state.map((item) => {
+        if (item.id === action.payload.id) {
+          return { ...item, maximized: !item.maximized };
+        }
+        return { ...item };
+      });
   }
 }
 
@@ -80,6 +87,8 @@ export default function OpenAppsProvider({ children }) {
     showLockUI,
     setShowLockUI,
   };
+
+  console.log(openApps);
 
   return (
     <>

@@ -53,7 +53,7 @@ function Taskbar() {
             return (
               <div
                 key={index}
-                className="flex text-sm items-center hover:bg-white hover:bg-opacity-20 px-3 py-2.5"
+                className="flex text-sm items-center hover:bg-white hover:bg-opacity-20 px-3 py-2.5 text-nowrap"
                 onClick={() =>
                   dispatch({ type: "minimize-app", payload: { id: item.id } })
                 }

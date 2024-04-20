@@ -82,7 +82,7 @@ function ShutDownUI() {
   });
 
   return (
-    <div className="absolute w-full h-full p-4 text-sm bg-stone-900 text-stone-300 z-30">
+    <div className="absolute w-full h-full p-4 text-sm bg-stone-900 text-stone-300 z-30 overflow-hidden">
       <div className="w-full text-center my-6">Hiiace OS 24.04</div>
       <ul>
         {showLines && showLines.length
@@ -105,6 +105,10 @@ function ShutDownUI() {
               Please remove installation media and close the tray (if any) then
               press ENTER:
             </span>
+            <div
+              onClick={() => window.location.reload()}
+              className="absolute top-0 overlay z-10 w-full h-screen"
+            ></div>
           </li>
         )}
       </ul>

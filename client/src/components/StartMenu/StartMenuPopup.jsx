@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import Sidebar from "./Sidebar.jsx";
 
 function StartMenuPopup({ setShowStartMenu }) {
-  const { openApps, dispatch } = useContext(OpenAppsContext);
+  const { dispatch } = useContext(OpenAppsContext);
 
   function handleOpenApp(itemIndex) {
     dispatch({
@@ -14,14 +14,12 @@ function StartMenuPopup({ setShowStartMenu }) {
       payload: {
         ...menu[itemIndex],
         minimized: false,
-        maximized: false,
+        maximized: document.body.clientWidth <= 480,
         zindex: 1,
       },
     });
     setShowStartMenu(false);
   }
-
-  console.log(openApps);
 
   return (
     <>
