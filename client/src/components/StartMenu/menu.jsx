@@ -3,6 +3,7 @@ import Welcome from "../Welcome/Welcome";
 import ToDoApp from "../ToDoApp/ToDoApp";
 import RateMyWork from "../RateMyWork/RateMyWork";
 import KeyboardTester from "../KeyboardTester/KeyboardTester";
+import Terminal from "../Terminal/Terminal";
 import { FaInfoCircle } from "react-icons/fa";
 import { PiTerminalWindow } from "react-icons/pi";
 import {
@@ -32,64 +33,64 @@ export const menu = [
     title: "Documents",
     content: "",
     icon: <FcFolder size={iconSize} />,
-    minWidth: 550,
-    minHeight: 380,
+    minWidth: "550px",
+    minHeight: "380px",
   },
   {
     id: 1,
     title: "Welcome",
     content: <Welcome />,
     icon: <FcIdea size={iconSize} />,
-    minWidth: 550,
-    minHeight: 380,
+    minWidth: "550px",
+    minHeight: "380px",
   },
   {
     id: 2,
     title: "Calculator",
     content: <Calculator />,
     icon: <FcCalculator size={iconSize} />,
-    minWidth: 200,
-    minHeight: 325,
+    minWidth: "200px",
+    minHeight: "325px",
   },
   {
     id: 3,
     title: "Keyboard Tester",
     content: <KeyboardTester />,
     icon: <FaKeyboard size={iconSize} />,
-    minWidth: 550,
-    minHeight: 380,
+    minWidth: "550px",
+    minHeight: "380px",
   },
   {
     id: 4,
     title: "Mathel Memory",
     content: "",
     icon: <FaBrain size={iconSize} color="#FFCACA" />,
-    minWidth: 550,
-    minHeight: 380,
+    minWidth: "550px",
+    minHeight: "380px",
   },
   {
     id: 5,
     title: "To-Do App",
     content: <ToDoApp />,
     icon: <FcTodoList size={iconSize} />,
-    minWidth: 375,
-    minHeight: 500,
+    minWidth: "375px",
+    minHeight: "500px",
   },
   {
     id: 6,
     title: "Terminal",
-    content: "",
+    content: <Terminal />,
     icon: <PiTerminalWindow size={iconSize} />,
-    minWidth: 550,
-    minHeight: 380,
+    minWidth: "550px",
+    minHeight: "380px",
   },
   {
     id: 7,
     title: "Rate My Work",
     content: <RateMyWork />,
     icon: <FcLike size={iconSize} />,
-    minWidth: 380,
-    minHeight: 450,
+    minWidth: "380px",
+    minHeight: "450px",
   },
 ];
 

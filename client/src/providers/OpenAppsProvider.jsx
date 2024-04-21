@@ -108,6 +108,9 @@ export default function OpenAppsProvider({ children }) {
   const [showScreen, setShowScreen] = useState(false);
   const [showLockUI, setShowLockUI] = useState(false);
 
+  const viewportWidth = document.body.clientWidth;
+  const viewportHeight = document.body.clientHeight;
+
   const settings = {
     openApps,
     dispatch,
@@ -117,6 +120,8 @@ export default function OpenAppsProvider({ children }) {
     setShowScreen,
     showLockUI,
     setShowLockUI,
+    viewportWidth,
+    viewportHeight,
   };
 
   console.log(openApps);

@@ -3,7 +3,7 @@ import GitHubLogo from "../../assets/icons/icons8-github-96.png";
 import LinkedInLogo from "../../assets/icons/icons8-linkedin-96.png";
 import TwitterLogo from "../../assets/icons/icons8-twitter-96.png";
 import InstagramLogo from "../../assets/icons/icons8-instagram-96.png";
-import SanwichLogo from "../../assets/icons/icons8-sandwich-96.png";
+import SeaShellLogo from "../../assets/icons/icons8-sea-shell-90.png";
 import { FaFilePdf } from "react-icons/fa6";
 
 function Welcome() {
@@ -14,9 +14,10 @@ function Welcome() {
       <div className="flex select-none">
         <div className="w-1/3 pt-4">
           <img
-            src={SanwichLogo}
-            alt="Ubuntu MATE Logo. Yep I'll replace it"
-            className="mx-auto"
+            src={SeaShellLogo}
+            alt="Sea Shell from Icons8"
+            width={120}
+            className="mx-auto mt-4"
           />
         </div>
         <div className="flex-1 p-3">

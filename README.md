@@ -91,8 +91,6 @@ Imitates the lock screen. Only unlocks by pressing Enter
 - Star rating from freeCodeCamp YouTube channel https://youtu.be/5ZdHfJVAY-s?si=4HAWdmQnuB_Oadob&t=2722
 - Will use Nodemailer in the future.
 
-**Future Apps and Features in mind right now:**
-
 **WEATHER APP**
 
 - Fetches data from https://openweathermap.org/api
@@ -103,14 +101,14 @@ Imitates the lock screen. Only unlocks by pressing Enter
 - A basic to-do app that segregates pending tasks and completed tasks
 - Added timestamps using MomentJS.
 
-**PDF READER**
-
 **TERMINAL**
+
+- Will only imitate appearance for now.
+- Inspired by nasan016's terminal portfolio https://webshellx.vercel.app/, and ForrestKnight's https://fkcodes.com/
+- Will probably continue building this only after getting hired, during weekends.
 
 **MATHEL MEMORY**
 
 JS game I made during bootcamp
 
-**NOTION**
-
-Fetch my diary using Notion API
+**KEYBOARD TESTER**
