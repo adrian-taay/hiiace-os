@@ -140,7 +140,7 @@ function Calculator() {
 
   return (
     <>
-      <div className="grid grid-cols-4 bg-slate-300 gap-4 p-5">
+      <div className="grid grid-cols-4 gap-4 p-5">
         <div className="output col-span-4 text-right">
           <div className="prev-operand">
             {formatOperand(previousOperand)} {operation}

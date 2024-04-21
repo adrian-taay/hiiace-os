@@ -5,7 +5,7 @@ import MusicPlayer from "../MusicPlayer/MusicPlayer";
 
 function ConkyLinux() {
   return (
-    <div className="w-full absolute flex flex-col items-center select-none">
+    <div className="w-full absolute flex flex-col  items-center select-none font-saira">
       <TimeDateDisplay />
       <RandomAdvice />
       <WeatherDisplay />

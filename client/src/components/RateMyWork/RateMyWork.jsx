@@ -36,6 +36,7 @@ function RateMyWork() {
               id=""
               cols="25"
               rows="3"
+              style={{ resize: "none" }}
             ></textarea>
           </div>
           <div className="mt-2">

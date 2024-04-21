@@ -10,7 +10,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        'ubuntu': ["Ubuntu Mono", 'monospace']
+        'ubuntu': ["Ubuntu Mono", 'monospace'],
+        'saira': ["Saira", 'sans-serif']
       }
     },
   },

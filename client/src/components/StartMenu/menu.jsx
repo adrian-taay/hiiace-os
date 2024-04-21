@@ -43,6 +43,7 @@ export const menu = [
     icon: <FcIdea size={iconSize} />,
     minWidth: "550px",
     minHeight: "380px",
+    unMaximizable: true,
   },
   {
     id: 2,
@@ -51,6 +52,7 @@ export const menu = [
     icon: <FcCalculator size={iconSize} />,
     minWidth: "200px",
     minHeight: "325px",
+    unMaximizable: true,
   },
   {
     id: 3,
@@ -75,6 +77,7 @@ export const menu = [
     icon: <FcTodoList size={iconSize} />,
     minWidth: "375px",
     minHeight: "500px",
+    bgBackground: "rgb(228, 228, 231)",
   },
   {
     id: 6,
@@ -83,6 +86,7 @@ export const menu = [
     icon: <PiTerminalWindow size={iconSize} />,
     minWidth: "550px",
     minHeight: "380px",
+    bgBackground: "rgba(24, 24, 27, 0.8)",
   },
   {
     id: 7,
@@ -91,6 +95,7 @@ export const menu = [
     icon: <FcLike size={iconSize} />,
     minWidth: "380px",
     minHeight: "450px",
+    unMaximizable: true,
   },
 ];
 

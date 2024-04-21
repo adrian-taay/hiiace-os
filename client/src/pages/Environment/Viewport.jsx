@@ -24,6 +24,8 @@ function Viewport() {
               minWidth={item.dimension.width}
               minHeight={item.minHeight}
               maximized={item.maximized}
+              unMaximizable={item.unMaximizable}
+              bgBackground={item.bgBackground}
             />
           );
         })}

@@ -11,7 +11,11 @@ function StartMenuPopup({ setShowStartMenu }) {
   const viewportWidth = document.body.clientWidth;
   const viewportHeight = document.body.clientHeight;
 
-  function handleOpenApp(itemIndex) {
+  function handleOpenApp(itemObj, itemIndex) {
+    const widthInNumber = Number(itemObj.minWidth.slice(0, 3));
+    const heightInNumber = Number(itemObj.minHeight.slice(0, 3));
+
+    console.log(widthInNumber);
     dispatch({
       type: "open-app",
       payload: {
@@ -20,12 +24,12 @@ function StartMenuPopup({ setShowStartMenu }) {
         maximized: false,
         zindex: 1,
         position: {
-          x: viewportWidth <= 480 ? 0 : (viewportWidth - 550) / 2,
-          y: (viewportHeight - 40 - 380) / 2,
+          x: viewportWidth <= 550 ? 0 : (viewportWidth - widthInNumber) / 2,
+          y: (viewportHeight - 40 - heightInNumber) / 2,
         },
         dimension: {
-          width: viewportWidth <= 480 ? `${viewportWidth}px` : "550px",
-          height: "380px",
+          width: viewportWidth <= 550 ? `${viewportWidth}px` : itemObj.minWidth,
+          height: itemObj.minHeight,
         },
       },
     });
@@ -45,7 +49,7 @@ function StartMenuPopup({ setShowStartMenu }) {
             <div
               key={index}
               className="flex items-center gap-3 cursor-default text-sm hover:bg-stone-900 hover:bg-opacity-60 px-5 py-2"
-              onClick={() => handleOpenApp(index)}
+              onClick={() => handleOpenApp(item, index)}
             >
               {item.icon} {item.title}
             </div>
