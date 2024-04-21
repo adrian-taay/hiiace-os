@@ -4,6 +4,7 @@ import ToDoApp from "../ToDoApp/ToDoApp";
 import RateMyWork from "../RateMyWork/RateMyWork";
 import KeyboardTester from "../KeyboardTester/KeyboardTester";
 import Terminal from "../Terminal/Terminal";
+import MathelMemory from "../MathelMemory/MathelMemory";
 import { FaInfoCircle } from "react-icons/fa";
 import { PiTerminalWindow } from "react-icons/pi";
 import {
@@ -65,7 +66,7 @@ export const menu = [
   {
     id: 4,
     title: "Mathel Memory",
-    content: "",
+    content: <MathelMemory />,
     icon: <FaBrain size={iconSize} color="#FFCACA" />,
     minWidth: "550px",
     minHeight: "380px",
