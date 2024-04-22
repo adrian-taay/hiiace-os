@@ -88,7 +88,7 @@ function Window({
               bgBackground == undefined ? "rgb(237, 237, 237)" : bgBackground,
           }}
         >
-          <div className="title-bar flex items-center justify-center w-full h-9 bg-neutral-800 text-white text-xs font-semibold">
+          <div className="title-bar flex flex-shrink-0 items-center justify-center w-full h-9 bg-neutral-800 text-white text-xs font-semibold">
             <p className="cursor-default">{title}</p>
             <div className="buttons absolute right-3 buttons flex gap-3 items-center cursor-pointer">
               <MdMinimize
@@ -114,7 +114,7 @@ function Window({
               />
             </div>
           </div>
-          <div className="content w-full relative">{content}</div>
+          <div className="content flex-1 w-full relative">{content}</div>
         </div>
       </Rnd>
     </>

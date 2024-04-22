@@ -11,7 +11,10 @@ export default {
     extend: {
       fontFamily: {
         'ubuntu': ["Ubuntu Mono", 'monospace'],
-        'saira': ["Saira", 'sans-serif']
+        'saira': ["Saira", 'sans-serif'],
+        'bowlby': ["Bowlby One SC", "sans-serif"],
+        'mansalva': ["Mansalva", 'sans-serif'],
+        'bungee': ["Bungee Shade", 'sans-serif']
       }
     },
   },
