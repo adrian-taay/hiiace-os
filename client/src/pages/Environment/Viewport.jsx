@@ -21,7 +21,7 @@ function Viewport() {
               zindex={item.zindex}
               size={item.dimension}
               position={item.position}
-              minWidth={item.dimension.width}
+              minWidth={item.minWidth}
               minHeight={item.minHeight}
               maximized={item.maximized}
               unMaximizable={item.unMaximizable}

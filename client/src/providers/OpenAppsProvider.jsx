@@ -13,9 +13,29 @@ function reducer(state, action) {
     case "minimize-app":
       return state.map((item) => {
         if (item.id === action.payload.id) {
-          return { ...item, minimized: !item.minimized };
+          return {
+            ...item,
+            minimized: true,
+            position: {
+              x: action.payload.x,
+              y: action.payload.y,
+            },
+            dimension: {
+              width: action.payload.width,
+              height: action.payload.height,
+            },
+          };
         }
         return { ...item };
+      });
+    case "restore-app":
+      return state.map((item) => {
+        if (item.id === action.payload.id) {
+          return {
+            ...item,
+            minimized: false,
+          };
+        }
       });
     case "close-app":
       return state.filter((item) => item.id !== action.payload.id);

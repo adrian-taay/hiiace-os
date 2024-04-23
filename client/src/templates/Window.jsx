@@ -64,6 +64,29 @@ function Window({
     }
   }
 
+  function handleMinimizeApp() {
+    dispatch({
+      type: "minimize-app",
+      payload: {
+        id: id,
+        ...winPosition,
+        ...winDimension,
+      },
+    });
+  }
+
+  function handleRestoreApp() {
+    dispatch({
+      type: "restore-app",
+      payload: {
+        id: id,
+        minimized: false,
+      },
+    });
+    setWinPosition(position);
+    setWinDimension(size);
+  }
+
   return (
     <>
       <Rnd
@@ -91,12 +114,7 @@ function Window({
           <div className="title-bar flex flex-shrink-0 items-center justify-center w-full h-9 bg-neutral-800 text-white text-xs font-semibold">
             <p className="cursor-default">{title}</p>
             <div className="buttons absolute right-3 buttons flex gap-3 items-center cursor-pointer">
-              <MdMinimize
-                size={14}
-                onClick={() =>
-                  dispatch({ type: "minimize-app", payload: { id: id } })
-                }
-              />
+              <MdMinimize size={14} onClick={handleMinimizeApp} />
               <FiSquare
                 size={10}
                 onClick={() => handleToggleMaximize()}
