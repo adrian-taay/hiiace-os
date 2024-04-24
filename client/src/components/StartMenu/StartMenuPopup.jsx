@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import Sidebar from "./Sidebar.jsx";
 
 function StartMenuPopup({ setShowStartMenu }) {
-  const { dispatch } = useContext(OpenAppsContext);
+  const { openApps, dispatch } = useContext(OpenAppsContext);
 
   const viewportWidth = document.body.clientWidth;
   const viewportHeight = document.body.clientHeight;
@@ -22,7 +22,7 @@ function StartMenuPopup({ setShowStartMenu }) {
         ...menu[itemIndex],
         minimized: false,
         maximized: false,
-        zindex: 1,
+        zindex: openApps.length,
         position: {
           x: viewportWidth <= 550 ? 0 : (viewportWidth - widthInNumber) / 2,
           y: (viewportHeight - 40 - heightInNumber) / 2,

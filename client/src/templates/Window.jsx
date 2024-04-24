@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { OpenAppsContext } from "../providers/OpenAppsProvider";
 import { MdMinimize } from "react-icons/md";
 import { FiSquare } from "react-icons/fi";
@@ -12,22 +12,21 @@ function Window({
   title,
   content,
   zindex,
-  size,
+  dimension,
   position,
   minWidth,
   minHeight,
   bgBackground,
   maximized,
   unMaximizable,
+  lastPosition,
+  lastDimension,
 }) {
   const { dispatch, viewportWidth, viewportHeight } =
     useContext(OpenAppsContext);
-  const [winPosition, setWinPosition] = useState({});
-  const [winDimension, setWinDimension] = useState({});
 
   function handleWindowDrag(_, d) {
     dispatch({ type: "drag-app", payload: { id: id, x: d.x, y: d.y } });
-    setWinPosition({ x: d.x, y: d.y });
   }
 
   function handleWindowResize(e, _, ref) {
@@ -39,7 +38,6 @@ function Window({
         height: ref.style.height,
       },
     });
-    setWinDimension({ width: ref.style.width, height: ref.style.height });
   }
 
   function handleToggleMaximize() {
@@ -50,16 +48,22 @@ function Window({
         type: "maximize-app",
         payload: {
           id: id,
-          x: 0,
-          y: 0,
-          width: viewportWidth,
-          height: viewportHeight - 40,
+          position: { x: 0, y: 0 },
+          dimension: { width: viewportWidth, height: viewportHeight - 40 },
+          lastPosition: position,
+          lastDimension: dimension,
         },
       });
     } else {
       dispatch({
-        type: "maximize-app",
-        payload: { id: id, ...winPosition, ...winDimension },
+        type: "unmaximize-app",
+        payload: {
+          id: id,
+          position: lastPosition,
+          dimension: lastDimension,
+          lastPosition: position,
+          lastDimension: dimension,
+        },
       });
     }
   }
@@ -69,28 +73,16 @@ function Window({
       type: "minimize-app",
       payload: {
         id: id,
-        ...winPosition,
-        ...winDimension,
+        lastPosition: position,
+        lastDimension: dimension,
       },
     });
-  }
-
-  function handleRestoreApp() {
-    dispatch({
-      type: "restore-app",
-      payload: {
-        id: id,
-        minimized: false,
-      },
-    });
-    setWinPosition(position);
-    setWinDimension(size);
   }
 
   return (
     <>
       <Rnd
-        size={size}
+        dimension={dimension}
         position={position}
         minWidth={minWidth}
         minHeight={minHeight}
@@ -145,8 +137,10 @@ Window.propTypes = {
   title: PropTypes.string,
   content: PropTypes.element,
   zindex: PropTypes.number,
-  size: PropTypes.object,
+  dimension: PropTypes.object,
   position: PropTypes.object,
+  lastDimension: PropTypes.object,
+  lastPosition: PropTypes.object,
   minWidth: PropTypes.string,
   minHeight: PropTypes.string,
   bgBackground: PropTypes.string,

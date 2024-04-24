@@ -13,17 +13,14 @@ function reducer(state, action) {
     case "minimize-app":
       return state.map((item) => {
         if (item.id === action.payload.id) {
+          const lastPosition = action.payload.lastPosition;
+          const lastDimension = action.payload.lastDimension;
+
           return {
             ...item,
             minimized: true,
-            position: {
-              x: action.payload.x,
-              y: action.payload.y,
-            },
-            dimension: {
-              width: action.payload.width,
-              height: action.payload.height,
-            },
+            lastPosition: lastPosition,
+            lastDimension: lastDimension,
           };
         }
         return { ...item };
@@ -34,6 +31,10 @@ function reducer(state, action) {
           return {
             ...item,
             minimized: false,
+            position: item.lastPosition,
+            dimension: item.lastDimension,
+            lastPosition: null,
+            lastDimension: null,
           };
         }
       });
@@ -41,7 +42,8 @@ function reducer(state, action) {
       return state.filter((item) => item.id !== action.payload.id);
     case "active-app":
       return state.map((item) => {
-        if (item.id === action.payload.id) return { ...item, zindex: 10 };
+        if (item.id === action.payload.id)
+          return { ...item, zindex: state.length };
         return { ...item, zindex: 0 };
       });
     case "minimize-all":
@@ -51,14 +53,33 @@ function reducer(state, action) {
     case "maximize-app":
       return state.map((item) => {
         if (item.id === action.payload.id) {
+          const lastPosition = action.payload.lastPosition;
+          const lastDimension = action.payload.lastDimension;
+
           return {
             ...item,
-            maximized: !item.maximized,
-            position: { x: action.payload.x, y: action.payload.y },
-            dimension: {
-              width: action.payload.width,
-              height: action.payload.height,
-            },
+            maximized: true,
+            position: action.payload.position,
+            dimension: action.payload.dimension,
+            lastPosition: lastPosition,
+            lastDimension: lastDimension,
+          };
+        }
+        return { ...item };
+      });
+    case "unmaximize-app":
+      return state.map((item) => {
+        if (item.id === action.payload.id) {
+          const lastPosition = action.payload.lastPosition;
+          const lastDimension = action.payload.lastDimension;
+
+          return {
+            ...item,
+            maximized: false,
+            position: action.payload.position,
+            dimension: action.payload.dimension,
+            lastPosition: lastPosition,
+            lastDimension: lastDimension,
           };
         }
         return { ...item };
