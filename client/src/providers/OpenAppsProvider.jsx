@@ -13,30 +13,12 @@ function reducer(state, action) {
     case "minimize-app":
       return state.map((item) => {
         if (item.id === action.payload.id) {
-          const lastPosition = action.payload.lastPosition;
-          const lastDimension = action.payload.lastDimension;
-
           return {
             ...item,
-            minimized: true,
-            lastPosition: lastPosition,
-            lastDimension: lastDimension,
+            minimized: !item.minimized,
           };
         }
         return { ...item };
-      });
-    case "restore-app":
-      return state.map((item) => {
-        if (item.id === action.payload.id) {
-          return {
-            ...item,
-            minimized: false,
-            position: item.lastPosition,
-            dimension: item.lastDimension,
-            lastPosition: null,
-            lastDimension: null,
-          };
-        }
       });
     case "close-app":
       return state.filter((item) => item.id !== action.payload.id);
@@ -53,33 +35,9 @@ function reducer(state, action) {
     case "maximize-app":
       return state.map((item) => {
         if (item.id === action.payload.id) {
-          const lastPosition = action.payload.lastPosition;
-          const lastDimension = action.payload.lastDimension;
-
           return {
             ...item,
-            maximized: true,
-            position: action.payload.position,
-            dimension: action.payload.dimension,
-            lastPosition: lastPosition,
-            lastDimension: lastDimension,
-          };
-        }
-        return { ...item };
-      });
-    case "unmaximize-app":
-      return state.map((item) => {
-        if (item.id === action.payload.id) {
-          const lastPosition = action.payload.lastPosition;
-          const lastDimension = action.payload.lastDimension;
-
-          return {
-            ...item,
-            maximized: false,
-            position: action.payload.position,
-            dimension: action.payload.dimension,
-            lastPosition: lastPosition,
-            lastDimension: lastDimension,
+            maximized: !item.maximized,
           };
         }
         return { ...item };
@@ -149,8 +107,8 @@ export default function OpenAppsProvider({ children }) {
   const [showScreen, setShowScreen] = useState(false);
   const [showLockUI, setShowLockUI] = useState(false);
 
-  const viewportWidth = document.body.clientWidth;
-  const viewportHeight = document.body.clientHeight;
+  // const viewportWidth = document.body.clientWidth;
+  // const viewportHeight = document.body.clientHeight;
 
   const settings = {
     openApps,
@@ -161,8 +119,6 @@ export default function OpenAppsProvider({ children }) {
     setShowScreen,
     showLockUI,
     setShowLockUI,
-    viewportWidth,
-    viewportHeight,
   };
 
   console.log(openApps);

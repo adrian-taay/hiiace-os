@@ -19,11 +19,20 @@ function Window({
   bgBackground,
   maximized,
   unMaximizable,
-  lastPosition,
-  lastDimension,
 }) {
-  const { dispatch, viewportWidth, viewportHeight } =
-    useContext(OpenAppsContext);
+  const { dispatch } = useContext(OpenAppsContext);
+
+  const viewportWidth = document.body.clientWidth;
+  const viewportHeight = document.body.clientHeight;
+
+  const maximizedPosition = { x: 0, y: 0 };
+  const maximizedDimension = {
+    width: `${viewportWidth}px`,
+    height: `${viewportHeight - 40}px`,
+  };
+
+  console.log(maximizedPosition);
+  console.log(maximizedDimension);
 
   function handleWindowDrag(_, d) {
     dispatch({ type: "drag-app", payload: { id: id, x: d.x, y: d.y } });
@@ -46,24 +55,12 @@ function Window({
     if (!maximized) {
       dispatch({
         type: "maximize-app",
-        payload: {
-          id: id,
-          position: { x: 0, y: 0 },
-          dimension: { width: viewportWidth, height: viewportHeight - 40 },
-          lastPosition: position,
-          lastDimension: dimension,
-        },
+        payload: { id: id },
       });
     } else {
       dispatch({
-        type: "unmaximize-app",
-        payload: {
-          id: id,
-          position: lastPosition,
-          dimension: lastDimension,
-          lastPosition: position,
-          lastDimension: dimension,
-        },
+        type: "maximize-app",
+        payload: { id: id },
       });
     }
   }
@@ -71,19 +68,15 @@ function Window({
   function handleMinimizeApp() {
     dispatch({
       type: "minimize-app",
-      payload: {
-        id: id,
-        lastPosition: position,
-        lastDimension: dimension,
-      },
+      payload: { id: id },
     });
   }
 
   return (
     <>
       <Rnd
-        dimension={dimension}
-        position={position}
+        position={maximized ? maximizedPosition : position}
+        dimension={maximized ? maximizedDimension : dimension}
         minWidth={minWidth}
         minHeight={minHeight}
         cancel=".content, .buttons"
@@ -93,8 +86,8 @@ function Window({
         onClick={() => dispatch({ type: "active-app", payload: { id: id } })}
         onDragStop={(_, d) => handleWindowDrag(_, d)}
         onResizeStop={(e, _, ref) => handleWindowResize(e, _, ref)}
-        disableDragging={maximized}
-        enableResizing={!maximized}
+        // disableDragging={maximized}
+        // enableResizing={!maximized}
       >
         <div
           className="flex flex-col z-20 cursor-auto h-full"
@@ -109,7 +102,7 @@ function Window({
               <MdMinimize size={14} onClick={handleMinimizeApp} />
               <FiSquare
                 size={10}
-                onClick={() => handleToggleMaximize()}
+                onClick={handleToggleMaximize}
                 color={
                   unMaximizable != undefined && unMaximizable ? "gray" : "white"
                 }
@@ -132,15 +125,12 @@ function Window({
 }
 
 Window.propTypes = {
-  defaultSize: PropTypes.object,
   id: PropTypes.number,
   title: PropTypes.string,
   content: PropTypes.element,
   zindex: PropTypes.number,
   dimension: PropTypes.object,
   position: PropTypes.object,
-  lastDimension: PropTypes.object,
-  lastPosition: PropTypes.object,
   minWidth: PropTypes.string,
   minHeight: PropTypes.string,
   bgBackground: PropTypes.string,
