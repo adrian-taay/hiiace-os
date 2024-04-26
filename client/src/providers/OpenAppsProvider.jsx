@@ -6,6 +6,7 @@ import ModalWindow from "../templates/ModalWindow";
 
 export const OpenAppsContext = createContext();
 
+// Reference at StartMenuPopup.jsx
 function reducer(state, action) {
   switch (action.type) {
     case "open-app":
@@ -15,33 +16,17 @@ function reducer(state, action) {
         if (item.id === action.payload.id) {
           return {
             ...item,
-            minimized: true,
-            position: {
-              x: action.payload.x,
-              y: action.payload.y,
-            },
-            dimension: {
-              width: action.payload.width,
-              height: action.payload.height,
-            },
+            minimized: !item.minimized,
           };
         }
         return { ...item };
-      });
-    case "restore-app":
-      return state.map((item) => {
-        if (item.id === action.payload.id) {
-          return {
-            ...item,
-            minimized: false,
-          };
-        }
       });
     case "close-app":
       return state.filter((item) => item.id !== action.payload.id);
     case "active-app":
       return state.map((item) => {
-        if (item.id === action.payload.id) return { ...item, zindex: 10 };
+        if (item.id === action.payload.id)
+          return { ...item, zindex: state.length };
         return { ...item, zindex: 0 };
       });
     case "minimize-all":
@@ -54,11 +39,6 @@ function reducer(state, action) {
           return {
             ...item,
             maximized: !item.maximized,
-            position: { x: action.payload.x, y: action.payload.y },
-            dimension: {
-              width: action.payload.width,
-              height: action.payload.height,
-            },
           };
         }
         return { ...item };

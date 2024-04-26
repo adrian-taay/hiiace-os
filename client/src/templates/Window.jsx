@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { OpenAppsContext } from "../providers/OpenAppsProvider";
 import { MdMinimize } from "react-icons/md";
 import { FiSquare } from "react-icons/fi";
@@ -12,7 +12,7 @@ function Window({
   title,
   content,
   zindex,
-  size,
+  dimension,
   position,
   minWidth,
   minHeight,
@@ -22,12 +22,17 @@ function Window({
 }) {
   const { dispatch, viewportWidth, viewportHeight } =
     useContext(OpenAppsContext);
-  const [winPosition, setWinPosition] = useState({});
-  const [winDimension, setWinDimension] = useState({});
+
+  const maximizedPosition = { x: 0, y: 0 };
+  const maximizedDimension = {
+    width: viewportWidth,
+    height: viewportHeight - 40,
+  };
+
+  const isViewNarrow = viewportWidth <= 640;
 
   function handleWindowDrag(_, d) {
     dispatch({ type: "drag-app", payload: { id: id, x: d.x, y: d.y } });
-    setWinPosition({ x: d.x, y: d.y });
   }
 
   function handleWindowResize(e, _, ref) {
@@ -39,7 +44,6 @@ function Window({
         height: ref.style.height,
       },
     });
-    setWinDimension({ width: ref.style.width, height: ref.style.height });
   }
 
   function handleToggleMaximize() {
@@ -48,18 +52,12 @@ function Window({
     if (!maximized) {
       dispatch({
         type: "maximize-app",
-        payload: {
-          id: id,
-          x: 0,
-          y: 0,
-          width: viewportWidth,
-          height: viewportHeight - 40,
-        },
+        payload: { id: id },
       });
     } else {
       dispatch({
         type: "maximize-app",
-        payload: { id: id, ...winPosition, ...winDimension },
+        payload: { id: id },
       });
     }
   }
@@ -67,33 +65,17 @@ function Window({
   function handleMinimizeApp() {
     dispatch({
       type: "minimize-app",
-      payload: {
-        id: id,
-        ...winPosition,
-        ...winDimension,
-      },
+      payload: { id: id },
     });
-  }
-
-  function handleRestoreApp() {
-    dispatch({
-      type: "restore-app",
-      payload: {
-        id: id,
-        minimized: false,
-      },
-    });
-    setWinPosition(position);
-    setWinDimension(size);
   }
 
   return (
     <>
       <Rnd
-        size={size}
-        position={position}
-        minWidth={minWidth}
-        minHeight={minHeight}
+        position={maximized ? maximizedPosition : position}
+        size={maximized ? maximizedDimension : dimension}
+        minWidth={isViewNarrow ? null : minWidth}
+        minHeight={isViewNarrow ? null : minHeight}
         cancel=".content, .buttons"
         className="drop-shadow-lg overflow-hidden"
         style={{ zIndex: zindex }}
@@ -117,7 +99,7 @@ function Window({
               <MdMinimize size={14} onClick={handleMinimizeApp} />
               <FiSquare
                 size={10}
-                onClick={() => handleToggleMaximize()}
+                onClick={handleToggleMaximize}
                 color={
                   unMaximizable != undefined && unMaximizable ? "gray" : "white"
                 }
@@ -132,7 +114,9 @@ function Window({
               />
             </div>
           </div>
-          <div className="content flex-1 w-full relative">{content}</div>
+          <div className="content flex-1 w-full relative sm:overflow-auto">
+            {content}
+          </div>
         </div>
       </Rnd>
     </>
@@ -140,12 +124,11 @@ function Window({
 }
 
 Window.propTypes = {
-  defaultSize: PropTypes.object,
   id: PropTypes.number,
   title: PropTypes.string,
   content: PropTypes.element,
   zindex: PropTypes.number,
-  size: PropTypes.object,
+  dimension: PropTypes.object,
   position: PropTypes.object,
   minWidth: PropTypes.string,
   minHeight: PropTypes.string,

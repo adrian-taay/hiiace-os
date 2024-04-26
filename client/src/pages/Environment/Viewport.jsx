@@ -4,6 +4,7 @@ import Window from "../../templates/Window";
 import ConkyLinux from "../../components/ConkyLinux/ConkyLinux";
 import LockUI from "../Screen/LockUI";
 
+// Reference at StartMenuPopup.jsx
 function Viewport() {
   const { openApps, shutDownScreen, showLockUI } = useContext(OpenAppsContext);
 
@@ -19,13 +20,15 @@ function Viewport() {
               title={item.title}
               content={item.content}
               zindex={item.zindex}
-              size={item.dimension}
+              dimension={item.dimension}
               position={item.position}
               minWidth={item.minWidth}
               minHeight={item.minHeight}
               maximized={item.maximized}
               unMaximizable={item.unMaximizable}
               bgBackground={item.bgBackground}
+              lastPosition={item.lastPosition}
+              lastDimension={item.lastDimension}
             />
           );
         })}

@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import Sidebar from "./Sidebar.jsx";
 
 function StartMenuPopup({ setShowStartMenu }) {
-  const { dispatch } = useContext(OpenAppsContext);
+  const { openApps, dispatch } = useContext(OpenAppsContext);
 
   const viewportWidth = document.body.clientWidth;
   const viewportHeight = document.body.clientHeight;
@@ -15,21 +15,20 @@ function StartMenuPopup({ setShowStartMenu }) {
     const widthInNumber = Number(itemObj.minWidth.slice(0, 3));
     const heightInNumber = Number(itemObj.minHeight.slice(0, 3));
 
-    console.log(widthInNumber);
     dispatch({
       type: "open-app",
       payload: {
         ...menu[itemIndex],
         minimized: false,
         maximized: false,
-        zindex: 1,
+        zindex: openApps.length,
         position: {
-          x: viewportWidth <= 550 ? 0 : (viewportWidth - widthInNumber) / 2,
+          x: viewportWidth <= 640 ? 0 : (viewportWidth - widthInNumber) / 2,
           y: (viewportHeight - 40 - heightInNumber) / 2,
         },
         dimension: {
-          width: viewportWidth <= 550 ? `${viewportWidth}px` : itemObj.minWidth,
-          height: itemObj.minHeight,
+          width: viewportWidth <= 640 ? viewportWidth : itemObj.minWidth,
+          height: "auto",
         },
       },
     });
