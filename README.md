@@ -4,7 +4,7 @@ Welcome! I made this page for the purpose of (1) compiling all the small project
 
 I take inspiration from this project made by DustinBrett (https://github.com/DustinBrett/daedalOS). As a novice developer, I made this simple implementation of how a desktop environment works. In the future, more apps and features will be added as I go.
 
-**DESKTOP ENVIRONMENT / WINDOWS MANAGER**
+**DESKTOP ENVIRONMENT**
 
 I want it to look like a desktop environment that is loosely based on how my current setup looks.
 
@@ -17,9 +17,14 @@ I want it to look like a desktop environment that is loosely based on how my cur
 
 Tools:
 
-- react-rnd: To make windows resizable and draggable
 - react-icons: Icons and logos
 - framer-motion: To animate pop-ups, toggle minimize and maximize, opening and closing of windows.
+
+**WINDOWS MANAGER**
+
+Position and dimension of window persists when maximized or minimized.
+
+- react-rnd: To make windows resizable and draggable
 
 **TASKBAR**
 

@@ -4,6 +4,7 @@ import Window from "../../templates/Window";
 import ConkyLinux from "../../components/ConkyLinux/ConkyLinux";
 import LockUI from "../Screen/LockUI";
 
+// Reference at StartMenuPopup.jsx
 function Viewport() {
   const { openApps, shutDownScreen, showLockUI } = useContext(OpenAppsContext);
 

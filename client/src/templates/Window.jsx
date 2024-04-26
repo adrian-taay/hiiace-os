@@ -20,19 +20,16 @@ function Window({
   maximized,
   unMaximizable,
 }) {
-  const { dispatch } = useContext(OpenAppsContext);
-
-  const viewportWidth = document.body.clientWidth;
-  const viewportHeight = document.body.clientHeight;
+  const { dispatch, viewportWidth, viewportHeight } =
+    useContext(OpenAppsContext);
 
   const maximizedPosition = { x: 0, y: 0 };
   const maximizedDimension = {
-    width: `${viewportWidth}px`,
-    height: `${viewportHeight - 40}px`,
+    width: viewportWidth,
+    height: viewportHeight - 40,
   };
 
-  console.log(maximizedPosition);
-  console.log(maximizedDimension);
+  const isViewNarrow = viewportWidth <= 640;
 
   function handleWindowDrag(_, d) {
     dispatch({ type: "drag-app", payload: { id: id, x: d.x, y: d.y } });
@@ -76,9 +73,9 @@ function Window({
     <>
       <Rnd
         position={maximized ? maximizedPosition : position}
-        dimension={maximized ? maximizedDimension : dimension}
-        minWidth={minWidth}
-        minHeight={minHeight}
+        size={maximized ? maximizedDimension : dimension}
+        minWidth={isViewNarrow ? null : minWidth}
+        minHeight={isViewNarrow ? null : minHeight}
         cancel=".content, .buttons"
         className="drop-shadow-lg overflow-hidden"
         style={{ zIndex: zindex }}
@@ -86,8 +83,8 @@ function Window({
         onClick={() => dispatch({ type: "active-app", payload: { id: id } })}
         onDragStop={(_, d) => handleWindowDrag(_, d)}
         onResizeStop={(e, _, ref) => handleWindowResize(e, _, ref)}
-        // disableDragging={maximized}
-        // enableResizing={!maximized}
+        disableDragging={maximized}
+        enableResizing={!maximized}
       >
         <div
           className="flex flex-col z-20 cursor-auto h-full"
@@ -117,7 +114,9 @@ function Window({
               />
             </div>
           </div>
-          <div className="content flex-1 w-full relative">{content}</div>
+          <div className="content flex-1 w-full relative sm:overflow-auto">
+            {content}
+          </div>
         </div>
       </Rnd>
     </>
