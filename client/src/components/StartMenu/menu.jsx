@@ -29,14 +29,14 @@ const iconSize = 24;
 const sideIconSize = 14;
 
 export const menu = [
-  {
-    id: 0,
-    title: "Documents",
-    content: "",
-    icon: <FcFolder size={iconSize} />,
-    minWidth: "550px",
-    minHeight: "380px",
-  },
+  // {
+  //   id: 0,
+  //   title: "Documents",
+  //   content: "",
+  //   icon: <FcFolder size={iconSize} />,
+  //   minWidth: "550px",
+  //   minHeight: "380px",
+  // },
   {
     id: 1,
     title: "Welcome",

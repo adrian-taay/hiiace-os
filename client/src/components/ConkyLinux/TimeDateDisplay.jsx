@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { TimeContext } from "../../providers/TimeProvider";
+import "./TimeDateDisplay.css";
 
 function TimeDateDisplay() {
   const { months, days, year, month, date, day, hour, mins } =
@@ -15,7 +16,9 @@ function TimeDateDisplay() {
         <div>{year}</div>
         <span className="font-extralight">|</span>
         <div>
-          {hour}:{mins}
+          {hour}
+          <span className="blink">:</span>
+          {mins}
         </div>
         <span className="font-extralight">|</span>
         <div>{days[day]}</div>
