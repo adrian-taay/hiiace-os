@@ -1,24 +1,35 @@
 import { createContext, useState } from "react";
 import PropTypes from "prop-types";
-import SplashScreen from "../SplashScreen/SplashScreen";
-import InstructionsPage from "../InstructionsPage/InstructionsPage";
-import GamePage from "../GamePage/GamePage";
-import ResultsPage from "../ResultsPage/ResultsPage";
 
 export const MathelMemoryContext = createContext();
 
-function pageDisplay(page) {
-  switch (page) {
-    case 0:
-      return <SplashScreen />;
-    case 1:
-      return <InstructionsPage />;
-    case 2:
-      return <GamePage />;
+const totalQuestions = 9;
+const questions = [...Array(totalQuestions)].map((_, index) => {
+  let level = {};
+  switch (true) {
+    case index <= 2:
+      level = { d: 3, m: 2 };
+      break;
+    case index <= 5:
+      level = { d: 5, m: 3 };
+      break;
     default:
-      return <ResultsPage />;
+      level = { d: 9, m: 3 };
+      break;
   }
-}
+
+  return {
+    d1: Math.floor(Math.random() * level.d) + 1,
+    d2: Math.floor(Math.random() * level.d) + 1,
+    d3: Math.floor(Math.random() * level.d) + 1,
+    m1: Math.floor(Math.random() * level.m) + 1,
+    m2: Math.floor(Math.random() * level.m) + 1,
+    m3: Math.floor(Math.random() * level.m) + 1,
+    answer() {
+      return this.d1 * this.m1 + this.d2 * this.m2 + this.d3 * this.m3;
+    },
+  };
+});
 
 export default function MathelMemoryProvider({ children }) {
   const [switchPage, setSwitchPage] = useState(0);
@@ -30,18 +41,21 @@ export default function MathelMemoryProvider({ children }) {
     Lives: 5,
   });
   const [timer, setTimer] = useState(20);
-  const [questions, setQuestions] = useState({});
+  const [gamePaused, setGamePaused] = useState(false);
+  const [questionIndex, setQuestionIndex] = useState(0);
 
   const settings = {
     playerStats,
     setPlayerStats,
     questions,
-    setQuestions,
+    questionIndex,
+    setQuestionIndex,
     timer,
     setTimer,
+    gamePaused,
+    setGamePaused,
     showQuitModal,
     setShowQuitModal,
-    pageDisplay,
     switchPage,
     setSwitchPage,
   };

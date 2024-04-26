@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import { MathelMemoryContext } from "../utils/MathelMemoryProvider";
-import { MdOutlineClose, MdOutlinePlayArrow, MdReplay } from "react-icons/md";
 
 function QuitModal() {
   const { timer, setShowQuitModal, setSwitchPage, setPlayerStats } =
@@ -25,24 +24,26 @@ function QuitModal() {
           answer has been entered or the time has run out!
         </p>
         <p className="text-2xl my-4">{timer}</p>
-        <div className="flex justify-around text-white">
+        <div className="flex flex-col text-white">
           <div
             className="mt-3 px-4 py-2 bg-[rgb(130,189,21)] rounded-md shadow-md cursor-pointer"
             onClick={() => setShowQuitModal(false)}
           >
-            <MdOutlinePlayArrow color="white" />
+            Resume
           </div>
-          <div
-            className="mt-3 px-4 py-2 bg-[rgb(215,160,42)] rounded-md shadow-md cursor-pointer"
-            onClick={handleRestart}
-          >
-            <MdReplay color="white" />
-          </div>
-          <div
-            className="mt-3 px-4 py-2 bg-[rgb(160,53,52)] rounded-md shadow-md cursor-pointer"
-            onClick={handleQuit}
-          >
-            <MdOutlineClose color="white" />
+          <div className="flex justify-between gap-3">
+            <div
+              className="flex-1 mt-3 px-4 py-2 bg-[rgb(215,160,42)] rounded-md shadow-md cursor-pointer"
+              onClick={handleRestart}
+            >
+              Restart
+            </div>
+            <div
+              className="flex-1 mt-3 px-4 py-2 bg-[rgb(160,53,52)] rounded-md shadow-md cursor-pointer"
+              onClick={handleQuit}
+            >
+              Quit
+            </div>
           </div>
         </div>
       </div>

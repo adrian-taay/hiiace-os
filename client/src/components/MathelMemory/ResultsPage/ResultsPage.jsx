@@ -2,14 +2,16 @@ import { useContext } from "react";
 import { MathelMemoryContext } from "../utils/MathelMemoryProvider";
 
 function ResultsPage() {
-  const { playerStats, setPlayerStats } = useContext(MathelMemoryContext);
+  const { playerStats, setPlayerStats, setSwitchPage } =
+    useContext(MathelMemoryContext);
 
   function handleRestartWindow() {
     setPlayerStats({
-      Player: "Guest",
+      Player: "",
       Score: 0,
       Lives: 5,
     });
+    setSwitchPage(0);
   }
 
   return (

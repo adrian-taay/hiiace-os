@@ -7,13 +7,16 @@ function SplashScreen() {
   const [name, setName] = useState("");
 
   function handlePlay() {
+    if (name.trim() === "") {
+      return;
+    }
     setPlayerStats((p) => ({ ...p, Player: name }));
     setSwitchPage(1);
     setName("");
   }
 
   return (
-    <>
+    <div className="flex flex-col items-center">
       <img src={MathelMemoryLogo} alt="Mathel Memory Logo" className="p-2" />
       <span
         style={{ textShadow: "2px 2px 5px #000000" }}
@@ -32,12 +35,17 @@ function SplashScreen() {
         />
         <button
           className="my-3 px-4 py-2 bg-green-600 text-white rounded-md shadow-md"
+          style={
+            name.length >= 3
+              ? { backgroundColor: "rgb(22 163 74)" }
+              : { backgroundColor: "grey" }
+          }
           onClick={handlePlay}
         >
           PLAY!
         </button>
       </div>
-    </>
+    </div>
   );
 }
 
