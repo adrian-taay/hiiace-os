@@ -47,7 +47,6 @@ function LockUI() {
       const data = JSON.parse(cachedImgData);
       setImgData(data);
       setBgImage(data.urls.regular);
-      console.log(imgData);
     } else {
       fetchPhoto();
     }
@@ -63,11 +62,16 @@ function LockUI() {
   return (
     <AnimatePresence>
       <motion.div
-        key="lock"
+        // key="lock"
         initial={{ y: -300, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        exit={{ y: -300, opacity: 0 }}
-        className="absolute top-0 left-0 w-full h-full flex flex-col justify-between pb-5 text-center bg-zinc-900 z-50 text-white"
+        exit={{
+          y: -300,
+          opacity: 0,
+          onComplete: () => console.log("Exit animation completed"),
+        }}
+        transition={{ duration: 0.2 }}
+        className="absolute left-0 w-full h-full flex flex-col justify-between pb-5 text-center bg-zinc-900 z-50 text-white"
         style={{ backgroundImage: `url(${bgImage})`, backgroundSize: "cover" }}
       >
         <div className="w-full flex bg-white bg-opacity-10  text-center items-center select-none">

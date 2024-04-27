@@ -5,6 +5,7 @@ import { MdMinimize } from "react-icons/md";
 import { FiSquare } from "react-icons/fi";
 import { AiFillCloseCircle } from "react-icons/ai";
 import { Rnd } from "react-rnd";
+import { motion } from "framer-motion";
 
 // Reference at Viewport.jsx
 function Window({
@@ -86,12 +87,15 @@ function Window({
         disableDragging={maximized}
         enableResizing={!maximized}
       >
-        <div
+        <motion.div
           className="flex flex-col z-20 cursor-auto h-full"
           style={{
             backgroundColor:
               bgBackground == undefined ? "rgb(237, 237, 237)" : bgBackground,
           }}
+          initial={{ scale: 0.75 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 0.15 }}
         >
           <div className="title-bar flex flex-shrink-0 items-center justify-center w-full h-9 bg-neutral-800 text-white text-xs font-semibold">
             <p className="cursor-default">{title}</p>
@@ -117,7 +121,7 @@ function Window({
           <div className="content flex-1 w-full relative sm:overflow-auto">
             {content}
           </div>
-        </div>
+        </motion.div>
       </Rnd>
     </>
   );

@@ -10,6 +10,15 @@ export const OpenAppsContext = createContext();
 function reducer(state, action) {
   switch (action.type) {
     case "open-app":
+      if (state.find((item) => item.id === action.payload.id))
+        return [...state].map((item) => {
+          if (item.id === action.payload.id) {
+            return { ...item, minimized: false, zindex: state.length };
+          } else {
+            return { ...item, zindex: 0 };
+          }
+        });
+
       return [...state, action.payload];
     case "minimize-app":
       return state.map((item) => {
@@ -75,7 +84,7 @@ function options(state, action) {
       return state.filter((item) => item.option === action.payload);
     case "restart":
       return state.filter((item) => item.option === action.payload);
-    case "cancel":
+    default:
       return screenStates;
   }
 }
