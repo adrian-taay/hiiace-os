@@ -48,6 +48,22 @@ function GamePage() {
     }
   }
 
+  // useEffect(() => {
+  //   document.addEventListener("keydown", (e) => {
+  //     if (e.key === "n") {
+  //       handleNextQuestion();
+  //     }
+  //   });
+
+  //   return () => {
+  //     document.addEventListener("keydown", (e) => {
+  //       if (e.key === "n") {
+  //         handleNextQuestion();
+  //       }
+  //     });
+  //   };
+  // }, []);
+
   return (
     <>
       <div className="relative">

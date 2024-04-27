@@ -32,6 +32,7 @@ function SplashScreen() {
           value={name}
           className="mt-1 h-8 rounded-md text-center"
           onChange={(e) => setName(e.target.value)}
+          autoFocus
         />
         <button
           className="my-3 px-4 py-2 bg-green-600 text-white rounded-md shadow-md"

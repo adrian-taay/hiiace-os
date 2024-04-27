@@ -2,8 +2,14 @@ import { useContext } from "react";
 import { MathelMemoryContext } from "../utils/MathelMemoryProvider";
 
 function ResultsPage() {
-  const { playerStats, setPlayerStats, setSwitchPage } =
-    useContext(MathelMemoryContext);
+  const {
+    playerStats,
+    setPlayerStats,
+    setSwitchPage,
+    setQuestionIndex,
+    setGamePaused,
+    setTimer,
+  } = useContext(MathelMemoryContext);
 
   function handleRestartWindow() {
     setPlayerStats({
@@ -11,6 +17,9 @@ function ResultsPage() {
       Score: 0,
       Lives: 5,
     });
+    setGamePaused(false);
+    setQuestionIndex(0);
+    setTimer(20);
     setSwitchPage(0);
   }
 
@@ -32,8 +41,8 @@ function ResultsPage() {
       >
         Quit
       </div>
-      <div className="mt-4 text-center text-xs text-zinc-500 w-4/5">
-        See original vanilla{" "}
+      <div className="mt-12 text-center text-xs text-zinc-500">
+        See my original vanilla{" "}
         <a
           href="https://mathel-memory-game.netlify.app/"
           target="_blank"
@@ -41,13 +50,13 @@ function ResultsPage() {
         >
           JS project
         </a>{" "}
-        through the guidance of{" "}
+        for{" "}
         <a
           href="https://www.upliftcodecamp.com/"
           target="_blank"
           className="underline"
         >
-          UPLIFT Code Camp
+          UPLIFT
         </a>
       </div>
     </div>

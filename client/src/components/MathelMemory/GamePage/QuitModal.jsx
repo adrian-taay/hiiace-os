@@ -2,17 +2,28 @@ import { useContext } from "react";
 import { MathelMemoryContext } from "../utils/MathelMemoryProvider";
 
 function QuitModal() {
-  const { timer, setShowQuitModal, setSwitchPage, setPlayerStats } =
-    useContext(MathelMemoryContext);
+  const {
+    timer,
+    setShowQuitModal,
+    setSwitchPage,
+    setPlayerStats,
+    setQuestionIndex,
+    setGamePaused,
+    setTimer,
+  } = useContext(MathelMemoryContext);
 
   function handleQuit() {
+    setShowQuitModal(false);
     setSwitchPage(3);
   }
 
   function handleRestart() {
     setPlayerStats((p) => ({ ...p, Score: 0, Lives: 5 }));
     setShowQuitModal(false);
-    setSwitchPage(2);
+    setGamePaused(false);
+    setQuestionIndex(0);
+    setTimer(20);
+    setSwitchPage(1);
   }
 
   return (

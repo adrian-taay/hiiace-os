@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { MathelMemoryContext } from "../utils/MathelMemoryProvider";
 import { FaCheck } from "react-icons/fa";
 
@@ -15,7 +15,17 @@ function QuestionItems() {
   let gameAnswer = questions[questionIndex].answer();
   const [itemResult, setItemResult] = useState(true);
 
+  const inputRef = useRef();
+
+  useEffect(() => {
+    inputRef.current.focus();
+  }, [questionIndex]);
+
   function handleCheckAnswer() {
+    if (playerAnswer.trim() === "") {
+      return;
+    }
+
     if (Number(playerAnswer) === gameAnswer) {
       setPlayerAnswer("");
       setGamePaused(true);
@@ -33,6 +43,12 @@ function QuestionItems() {
   function handleNumberInput(e) {
     if (/^[0-9\b]+$/.test(e.target.value)) {
       setPlayerAnswer(e.target.value);
+    }
+  }
+
+  function handleEnterCheckAnswer(e) {
+    if (e.key === "Enter") {
+      handleCheckAnswer();
     }
   }
 
@@ -59,6 +75,8 @@ function QuestionItems() {
           className="w-24 text-center p-[9px] rounded-l-md bg-zinc-300"
           onChange={(e) => handleNumberInput(e)}
           disabled={gamePaused}
+          ref={inputRef}
+          onKeyDown={handleEnterCheckAnswer}
         />
         <button
           className="bg-[rgb(127,80,171)] p-3 rounded-r-md"
