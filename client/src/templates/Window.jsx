@@ -88,10 +88,10 @@ function Window({
         enableResizing={!maximized}
       >
         <motion.div
-          className="flex flex-col z-20 cursor-auto h-full"
+          className="flex flex-col z-20 cursor-auto h-full rounded-md overflow-hidden"
           style={{
             backgroundColor:
-              bgBackground == undefined ? "rgb(237, 237, 237)" : bgBackground,
+              bgBackground == undefined ? "rgb(248 250 252)" : bgBackground,
           }}
           initial={{ scale: 0.75 }}
           animate={{ scale: 1 }}

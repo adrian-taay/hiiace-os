@@ -1,12 +1,47 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { OpenAppsContext } from "../../providers/OpenAppsProvider";
 import Window from "../../templates/Window";
 import ConkyLinux from "../../components/ConkyLinux/ConkyLinux";
 import LockUI from "../Screen/LockUI";
+import { menu } from "../../components/StartMenu/menu";
 
 // Reference at StartMenuPopup.jsx
 function Viewport() {
-  const { openApps, shutDownScreen, showLockUI } = useContext(OpenAppsContext);
+  const { openApps, dispatch, shutDownScreen, showLockUI } =
+    useContext(OpenAppsContext);
+
+  const welcomeWindow = menu.find((item) => item.title === "Welcome");
+
+  useEffect(() => {
+    const viewportWidth = document.body.clientWidth;
+    const viewportHeight = document.body.clientHeight;
+
+    const widthInNumber = Number(welcomeWindow.minWidth.slice(0, 3));
+    const heightInNumber = Number(welcomeWindow.minHeight.slice(0, 3));
+
+    const showWelcome = setTimeout(() => {
+      dispatch({
+        type: "open-app",
+        payload: {
+          ...welcomeWindow,
+          minimized: false,
+          maximized: false,
+          zindex: openApps.length,
+          position: {
+            x: viewportWidth <= 640 ? 0 : (viewportWidth - widthInNumber) / 2,
+            y: (viewportHeight - 40 - heightInNumber) / 2,
+          },
+          dimension: {
+            width:
+              viewportWidth <= 640 ? viewportWidth : welcomeWindow.minWidth,
+            height: "auto",
+          },
+        },
+      });
+    }, 3000);
+
+    return () => clearTimeout(showWelcome);
+  }, []);
 
   return (
     <>

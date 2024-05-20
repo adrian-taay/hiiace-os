@@ -9,7 +9,7 @@ import { FaInfoCircle } from "react-icons/fa";
 import { PiTerminalWindow } from "react-icons/pi";
 import {
   FcCalculator,
-  FcFolder,
+  // FcFolder,
   FcIdea,
   FcLike,
   FcTodoList,

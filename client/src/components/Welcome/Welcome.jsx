@@ -27,15 +27,16 @@ function Welcome() {
             I&apos;m Adrian Mores. Architect. Web Developer.
           </h4>
           <p className="text-xs">
-            This page serves as the catch-all place to all those mini ReactJS
-            projects I learn from YouTube that I usually do not include in my
-            resume. I will be adding more features and programs as I get better.
-            Please take a look around!
+            This page is a simple implementation of a desktop environment. This
+            serves as the catch-all place for all the small React projects
+            I&apos;ve built, either by following a tutorial video or by trying
+            out a feature or a package. I will be adding more features and
+            programs as I go along. Please take a look around!
           </p>
           <div className="text-xs mt-4">
             <p>Made with ReactJS and Tailwind CSS ☑️</p>
           </div>
-          <div className="quick-links mt-3 mx-auto">
+          <div className="quick-links my-4 mx-auto">
             <p>Quick Links:</p>
             <ul className="flex gap-4 mt-3 items-center">
               <li>
