@@ -103,7 +103,7 @@ export const menu = [
 export const sidemenu = [
   {
     title: "Resume",
-    url: "https://adrian-mores.netlify.app/downloads/Mores_FullStackDev_MERN_2023.pdf",
+    url: "https://adrian-mores.netlify.app/downloads/Mores_Webdev_2024.pdf",
     icon: <FaFilePdf size={sideIconSize} />,
   },
   {
